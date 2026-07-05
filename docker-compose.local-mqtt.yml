@@ -1,0 +1,12 @@
+# Local MQTT profile — start API + DB + Mosquitto in Docker
+# Usage:
+#   docker compose --profile local-mqtt up -d
+
+services:
+  api:
+    environment:
+      MQTT_BROKER_HOST: mosquitto
+      MQTT_BROKER_PORT: 1883
+    depends_on:
+      mosquitto:
+        condition: service_started

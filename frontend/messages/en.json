@@ -1,0 +1,325 @@
+{
+  "common": {
+    "appName": "SmartPlug",
+    "loading": "Loading…",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "retry": "Retry",
+    "live": "Live",
+    "logout": "Logout",
+    "help": "Help",
+    "close": "Close",
+    "admin": "Admin",
+    "add": "Add",
+    "create": "Create",
+    "delete": "Delete",
+    "search": "Search",
+    "yes": "Yes",
+    "no": "No",
+    "done": "Done",
+    "name": "Name",
+    "rename": "Rename",
+    "serial": "Serial"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "devices": "Devices",
+    "shares": "Shares",
+    "guide": "Guide"
+  },
+  "login": {
+    "title": "Sign in",
+    "subtitlePhone": "Sign in with your phone number",
+    "subtitleOtp": "Enter the verification code",
+    "phone": "Phone number",
+    "phoneHint": "+1234567890",
+    "sendOtp": "Send code",
+    "otp": "Verification code",
+    "verify": "Verify",
+    "codeSentTo": "Code sent to",
+    "changeNumber": "Change number",
+    "resendIn": "Resend in {sec}s",
+    "resendCode": "Resend code",
+    "footer": "OTP-based authentication · no password needed",
+    "devHint": "Dev mode: add ?dev=1 to URL for OTP auto-fill",
+    "devFetching": "Fetching OTP…",
+    "devFilled": "DEV: OTP auto-filled ({code})",
+    "devUnavailable": "DEV: OTP endpoint unavailable — check backend logs",
+    "errPhoneRequired": "Enter your phone number",
+    "errPhoneInvalid": "Phone must start with + followed by country code and number",
+    "errSendOtp": "Failed to send OTP",
+    "errOtpRequired": "Enter the verification code",
+    "errInvalidCode": "Invalid code"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {phone}",
+    "total": "Total",
+    "online": "Online",
+    "households": "Households",
+    "addHousehold": "+ Household",
+    "allDevices": "All Devices",
+    "householdName": "Household name",
+    "householdPlaceholder": "e.g. Home",
+    "noDevices": "No devices yet",
+    "noDevicesHint": "Add a smart plug or wait for one to be shared with you",
+    "addDevice": "Add device",
+    "readGuide": "Read the setup guide",
+    "devicesSection": "Devices",
+    "recentEvents": "Recent Events",
+    "viewAll": "View all",
+    "noEvents": "No recent events",
+    "createFailed": "Failed to create household",
+    "timeAgo": "{value}s ago",
+    "timeAgoMin": "{value}m ago",
+    "timeAgoHr": "{value}h ago",
+    "timeAgoDay": "{value}d ago"
+  },
+  "devices": {
+    "title": "Devices",
+    "addDevice": "Add device",
+    "noDevices": "No devices found",
+    "noDevicesHousehold": "This household has no devices",
+    "noDevicesHint": "Add your first smart plug or check shares.",
+    "readGuide": "Read the setup guide",
+    "loadFailed": "Failed to load devices"
+  },
+  "deviceDetail": {
+    "loadFailed": "Failed to load device",
+    "renameFailed": "Failed to rename",
+    "voltage": "Voltage",
+    "current": "Current",
+    "power": "Power",
+    "lastSeen": "Last seen: {time}",
+    "settings": "Settings",
+    "quickLinks": "Quick Links",
+    "eventHistory": "Event History",
+    "shareAccess": "Share Access"
+  },
+  "deviceEvents": {
+    "title": "Event History",
+    "back": "← Back to device",
+    "loadFailed": "Failed to load events",
+    "noEvents": "No events yet",
+    "noEventsRecorded": "No events recorded yet",
+    "type": "Type",
+    "time": "Time",
+    "refresh": "Refresh",
+    "previous": "Previous",
+    "next": "Next",
+    "eventCount": "{total} event(s)",
+    "colInitiator": "Initiator",
+    "colTimestamp": "Timestamp",
+    "pagination": "{from} – {to} of {total}"
+  },
+  "deviceShares": {
+    "title": "Share Access",
+    "subtitle": "Manage who can access this device",
+    "back": "← Back to device",
+    "phone": "Phone number",
+    "phoneHint": "+1234567890",
+    "phoneRequired": "Phone number is required",
+    "permission": "Permission",
+    "permView": "View",
+    "permControl": "Control",
+    "permAdmin": "Admin",
+    "permViewDesc": "Can see device state only",
+    "permControlDesc": "Can turn device on/off",
+    "permAdminDesc": "Full control + can share with others",
+    "invite": "Send invite",
+    "sendInvitation": "Send Invitation",
+    "addShare": "Add Share",
+    "loadFailed": "Failed to load shares",
+    "inviteFailed": "Failed to send invite",
+    "createFailed": "Failed to create share",
+    "revokeFailed": "Failed to revoke",
+    "noShares": "No shares for this device yet",
+    "emptyTitle": "No one has access to this device yet",
+    "emptyHint": "Add someone by phone number to grant access",
+    "colPhone": "Phone",
+    "colStatus": "Status",
+    "colActions": "Actions"
+  },
+  "addDevice": {
+    "title": "Add device",
+    "subtitle": "Register a smart plug using its serial number and pairing token.",
+    "back": "← Back to devices",
+    "stepSerial": "Serial",
+    "stepToken": "Token",
+    "stepLink": "Link",
+    "stepDone": "Done",
+    "serial": "Device serial number",
+    "serialLabel": "Serial",
+    "serialPlaceholder": "SN-2026-000001",
+    "name": "Device name (optional)",
+    "namePlaceholder": "e.g. Living Room",
+    "getToken": "Get pairing token",
+    "token": "Pairing token",
+    "tokenHint": "Use this token on the device label or share it with the mobile app claim flow. Token expires in 24 hours.",
+    "register": "Register device",
+    "linkHint": "Device registered. Link it to a household to control it from the dashboard.",
+    "household": "Household",
+    "selectHousehold": "Select household…",
+    "createHousehold": "Create household",
+    "linkToHousehold": "Link to household",
+    "success": "Device added!",
+    "successHint": "Your device is linked and ready to control.",
+    "viewDevices": "View devices",
+    "goDashboard": "Go to dashboard",
+    "wifiHint": "Setting up via Wi-Fi? Use the setup guide on your phone.",
+    "setupGuide": "setup guide",
+    "tokenFailed": "Failed to create pairing token",
+    "registerFailed": "Failed to register device",
+    "householdRequired": "Select or create a household",
+    "householdFailed": "Failed to create household",
+    "linkFailed": "Failed to link device"
+  },
+  "guide": {
+    "title": "Setup guide",
+    "subtitle": "Step-by-step instructions for using SmartPlug on web and mobile.",
+    "backDashboard": "← Dashboard",
+    "manageShares": "Manage shares",
+    "addDevice": "Add device",
+    "sections": {
+      "login": {
+        "title": "1. Log in with your phone",
+        "steps": [
+          "Open SmartPlug and enter your phone number in international format (e.g. +1234567890).",
+          "Enter the one-time code sent to your phone.",
+          "In development, visit /login?dev=1 for an auto-fill OTP panel."
+        ]
+      },
+      "household": {
+        "title": "2. Create a household",
+        "steps": [
+          "On the dashboard, click + Household.",
+          "Give it a name such as Home or Office.",
+          "You can create multiple households to separate locations."
+        ]
+      },
+      "addDevice": {
+        "title": "3. Add a device",
+        "steps": [
+          "Claim code (web or mobile): enter the serial (e.g. SN-2026-000001) and pairing token, then link to a household.",
+          "Wi-Fi setup (mobile): put the plug in AP mode, connect to SmartPlug-XXXX Wi-Fi, enter home Wi-Fi credentials and serial in the app.",
+          "The device must connect to the internet and MQTT before it shows as online."
+        ]
+      },
+      "control": {
+        "title": "4. Control power",
+        "steps": [
+          "Open the dashboard to see all devices in the selected household.",
+          "Tap the power toggle to turn a plug on or off.",
+          "Green online badge means the device is reachable; offline means it lost connection."
+        ]
+      },
+      "share": {
+        "title": "5. Share access",
+        "steps": [
+          "Go to Shares and invite someone by phone number.",
+          "Choose permission: view (read-only), control (toggle power), or admin (manage device).",
+          "They accept the invite from their Shares page."
+        ]
+      },
+      "troubleshoot": {
+        "title": "6. Troubleshooting",
+        "steps": [
+          "Device stays offline: confirm home Wi-Fi password, serial matches the label, and MQTT broker is reachable.",
+          "Cannot register: pairing token may be expired (24 h) — generate a new one from Add Device.",
+          "No control permission: ask the device owner for control or admin access.",
+          "For deployment details, see docs/fa/START_HERE.md in the project repository."
+        ]
+      }
+    }
+  },
+  "help": {
+    "title": "Quick start",
+    "fullGuide": "Full setup guide →",
+    "closeAria": "Close help",
+    "sections": {
+      "login": {
+        "title": "Log in",
+        "body": "Enter your phone number and the OTP code sent to you. In development, use the dev panel on the login page."
+      },
+      "household": {
+        "title": "Create a household",
+        "body": "From the dashboard, tap + Household. Devices are grouped by household so family members can share access."
+      },
+      "addDevice": {
+        "title": "Add a device",
+        "body": "Use Devices → Add Device for claim-code setup, or the mobile app for Wi-Fi AP provisioning."
+      },
+      "control": {
+        "title": "Control power",
+        "body": "Toggle devices from the dashboard. Status updates in real time when the device is online."
+      },
+      "share": {
+        "title": "Share access",
+        "body": "Open Shares to invite others by phone number with view, control, or admin permission."
+      }
+    }
+  },
+  "admin": {
+    "title": "Platform Admin",
+    "stats": "Overview",
+    "users": "Users",
+    "devices": "Devices",
+    "households": "Households",
+    "events": "Events",
+    "totalUsers": "Users",
+    "totalHouseholds": "Households",
+    "totalDevices": "Devices",
+    "onlineDevices": "Online",
+    "linkedDevices": "Linked",
+    "seedDevice": "Seed device serial",
+    "serial": "Serial",
+    "createToken": "Create pairing token",
+    "tokenCreated": "Pairing token created",
+    "phone": "Phone",
+    "role": "Admin flag",
+    "members": "Members",
+    "deviceCount": "Devices",
+    "accessDenied": "Platform admin access required",
+    "backToApp": "Back to app",
+    "colType": "Type",
+    "colDevice": "Device",
+    "colInitiator": "Initiator",
+    "colTime": "Time"
+  },
+  "shares": {
+    "title": "My Shares",
+    "incoming": "Incoming Shares",
+    "myShares": "My Shares",
+    "grantee": "Grantee",
+    "scope": "Scope",
+    "permission": "Permission",
+    "status": "Status",
+    "created": "Created",
+    "actions": "Actions",
+    "item": "Item",
+    "revoke": "Revoke",
+    "revokeConfirm": "Revoke?",
+    "accept": "Accept",
+    "decline": "Decline",
+    "emptyOutgoing": "You haven't shared any devices or households yet",
+    "emptyOutgoingHint": "Go to a device to share access with another user",
+    "browseDevices": "Browse Devices",
+    "emptyIncoming": "No sharing invitations yet",
+    "emptyIncomingHint": "When someone shares a device or household with you, it will appear here",
+    "goDashboard": "Go to Dashboard",
+    "loadFailed": "Failed to load shares",
+    "revokeFailed": "Failed to revoke",
+    "actionFailed": "Action failed",
+    "scopeDevice": "Device",
+    "scopeHousehold": "Household",
+    "statusAccepted": "accepted",
+    "statusPending": "pending",
+    "statusDeclined": "declined",
+    "done": "Done"
+  },
+  "errors": {
+    "loadFailed": "Failed to load data",
+    "sessionExpired": "Session expired"
+  }
+}

@@ -1,0 +1,89 @@
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-smartplug}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-smartplug}
+      POSTGRES_DB: ${POSTGRES_DB:-smartplug}
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-smartplug}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mosquitto:
+    profiles: ["local-mqtt"]
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    environment:
+      MQTT_PASSWORD: ${MQTT_PASSWORD:-devpass}
+    volumes:
+      - ./deploy/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./deploy/mosquitto/acl:/mosquitto/config/acl:ro
+      - mosquitto_passwd:/mosquitto/passwd
+      - mosquitto_data:/mosquitto/data
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        if [ ! -f /mosquitto/passwd/passwd ]; then
+          mosquitto_passwd -b -c /mosquitto/passwd/passwd smartplug-backend "$${MQTT_PASSWORD:-devpass}"
+        fi
+        exec mosquitto -c /mosquitto/config/mosquitto.conf
+    healthcheck:
+      test: ["CMD-SHELL", "mosquitto_sub -h localhost -p 1883 -u smartplug-backend -P $${MQTT_PASSWORD:-devpass} -t '$$SYS/broker/version' -C 1 -W 3 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-smartplug}:${POSTGRES_PASSWORD:-smartplug}@db:5432/${POSTGRES_DB:-smartplug}
+      MQTT_BROKER_HOST: mosquitto
+      MQTT_BROKER_PORT: 1883
+      MQTT_USERNAME: ${MQTT_USERNAME:-smartplug-backend}
+      MQTT_PASSWORD: ${MQTT_PASSWORD:-devpass}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    entrypoint: ["/bin/sh", "/app/docker-entrypoint.sh"]
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/v1}
+        NEXT_PUBLIC_DEFAULT_LOCALE: ${NEXT_PUBLIC_DEFAULT_LOCALE:-fa}
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/v1}
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  mosquitto_passwd:
+  mosquitto_data:

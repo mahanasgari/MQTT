@@ -1,0 +1,10 @@
+# Backend service account — full telemetry read, command write
+user smartplug-backend
+topic read tele/#
+topic write cmnd/#
+topic read $SYS/#
+
+# Dev test device user (optional manual testing)
+user device-SP00000001
+topic write tele/SP00000001/#
+topic read cmnd/SP00000001/#

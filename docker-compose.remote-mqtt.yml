@@ -1,0 +1,20 @@
+# Use VPS / remote Mosquitto instead of local Docker broker.
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.remote-mqtt.yml up -d
+#
+# Set in .env:
+#   MQTT_BROKER_HOST=your.vps.ip
+#   MQTT_BROKER_PORT=1883
+#   MQTT_USERNAME=smartplug-backend
+#   MQTT_PASSWORD=your-mqtt-password
+
+services:
+  api:
+    environment:
+      MQTT_BROKER_HOST: ${MQTT_BROKER_HOST}
+      MQTT_BROKER_PORT: ${MQTT_BROKER_PORT:-1883}
+      MQTT_USERNAME: ${MQTT_USERNAME:-smartplug-backend}
+      MQTT_PASSWORD: ${MQTT_PASSWORD}
+
+  mosquitto:
+    profiles: ["local-mqtt-disabled"]

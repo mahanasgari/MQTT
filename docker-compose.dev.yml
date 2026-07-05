@@ -1,0 +1,16 @@
+# Dev overrides: hot reload for API and Web
+services:
+  api:
+    command: ["--reload"]
+    volumes:
+      - ./backend:/app
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    command: npm run dev

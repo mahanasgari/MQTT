@@ -1,0 +1,3 @@
+# Local environment (Docker Compose + secrets)
+.env
+.env.local
