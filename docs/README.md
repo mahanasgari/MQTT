@@ -16,6 +16,7 @@ Default web locale is **Persian** (`/fa/...`). Set `NEXT_PUBLIC_DEFAULT_LOCALE=f
 | Guide | Description |
 |-------|-------------|
 | [START_HERE.md](fa/START_HERE.md) | راهنمای جامع: Docker، ورود، ادمین، ثبت دستگاه، MQTT |
+| [VPS_DEPLOY.md](fa/VPS_DEPLOY.md) | استقرار کامل روی VPS (Nginx + MQTT) |
 | [MQTT_VPS_AND_LOCAL.md](fa/MQTT_VPS_AND_LOCAL.md) | انتخاب بروکر محلی Docker در مقابل VPS |
 | [QUICKSTART_DOCKER.md](fa/QUICKSTART_DOCKER.md) | راه‌اندازی سریع Docker |
 | [MQTT_SETUP.md](fa/MQTT_SETUP.md) | پیکربندی Mosquitto روی VPS (include_dir، فایروال) |

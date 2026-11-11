@@ -43,6 +43,7 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showCreate, setShowCreate] = useState(false);
+  const [creatingLocal, setCreatingLocal] = useState(false);
   const [newName, setNewName] = useState("");
   const [recentEvents, setRecentEvents] = useState<EnrichedEvent[]>([]);
   const [eventsLoading, setEventsLoading] = useState(false);
@@ -146,6 +147,22 @@ export default function DashboardPage() {
     [fetchData],
   );
 
+  const handleCreateLocalTest = async () => {
+    setCreatingLocal(true);
+    setError("");
+    try {
+      await api.createLocalTestDevice({
+        name: t("localTestDevice"),
+        household_id: selectedHousehold,
+      });
+      await fetchData();
+    } catch (e) {
+      setError(e instanceof ApiError ? e.detail : te("loadFailed"));
+    } finally {
+      setCreatingLocal(false);
+    }
+  };
+
   const handleCreateHousehold = async () => {
     if (!newName.trim()) return;
     try {
@@ -209,6 +226,15 @@ export default function DashboardPage() {
           <Button variant="secondary" size="sm" onClick={() => setShowCreate(!showCreate)}>
             {showCreate ? tc("cancel") : t("addHousehold")}
           </Button>
+          <Button
+            variant="secondary"
+            size="sm"
+            loading={creatingLocal}
+            onClick={handleCreateLocalTest}
+            title={t("localTestHint")}
+          >
+            {t("localTestDevice")}
+          </Button>
           <Link href="/devices">
             <Button variant="ghost" size="sm">{t("allDevices")}</Button>
           </Link>
@@ -244,6 +270,15 @@ export default function DashboardPage() {
           <Link href="/devices/add">
             <Button className="mt-4">{t("addDevice")}</Button>
           </Link>
+          <Button
+            variant="secondary"
+            className="mt-3"
+            loading={creatingLocal}
+            onClick={handleCreateLocalTest}
+          >
+            {t("localTestDevice")}
+          </Button>
+          <p className="text-xs text-gray-400 mt-2">{t("localTestHint")}</p>
           <Link href="/guide" className="block mt-3 text-sm text-blue-600 hover:underline">
             {t("readGuide")}
           </Link>

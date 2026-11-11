@@ -106,9 +106,13 @@ See [../fa/ADMIN_GUIDE.md](../fa/ADMIN_GUIDE.md) for the full admin panel guide.
 
 ## 5. Register a device
 
+**Fastest (no hardware):** Dashboard → **Local test device**. Creates a virtual plug that stays online; the power toggle works immediately. On the device page use **Simulate online / offline**.
+
 **User flow:** Devices → Add device → serial `SP00000001` → pairing token → link to household.
 
 **Admin flow:** Admin → Devices → register factory serial → create pairing token.
+
+**Deploy the whole stack on a VPS:** [../fa/VPS_DEPLOY.md](../fa/VPS_DEPLOY.md) (`docker-compose.prod.yml`).
 
 ## 6. MQTT test
 

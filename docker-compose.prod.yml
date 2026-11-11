@@ -1,0 +1,111 @@
+# Production stack ON the VPS: db + mosquitto + api + web + nginx
+# Usage (on the VPS):
+#   cp .env.example .env   # then set PUBLIC_HOST, SECRET_KEY, MQTT_PASSWORD, PLATFORM_ADMIN_PHONES
+#   docker compose -f docker-compose.prod.yml up -d --build
+#   docker compose -f docker-compose.prod.yml exec api alembic upgrade head
+#
+# Open:  http://YOUR_VPS_IP/fa/login
+# MQTT:  YOUR_VPS_IP:1883
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-smartplug}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-smartplug}
+      POSTGRES_DB: ${POSTGRES_DB:-smartplug}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-smartplug}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    environment:
+      MQTT_PASSWORD: ${MQTT_PASSWORD:-devpass}
+      MQTT_DEVICE_PASSWORD: ${MQTT_DEVICE_PASSWORD:-devicepass}
+    volumes:
+      - ./deploy/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./deploy/mosquitto/acl:/mosquitto/config/acl:ro
+      - mosquitto_passwd:/mosquitto/passwd
+      - mosquitto_data:/mosquitto/data
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        if [ ! -f /mosquitto/passwd/passwd ]; then
+          mosquitto_passwd -b -c /mosquitto/passwd/passwd smartplug-backend "$${MQTT_PASSWORD:-devpass}"
+        fi
+        mosquitto_passwd -b /mosquitto/passwd/passwd device "$${MQTT_DEVICE_PASSWORD:-devicepass}"
+        exec mosquitto -c /mosquitto/config/mosquitto.conf
+    healthcheck:
+      test: ["CMD-SHELL", "mosquitto_sub -h localhost -p 1883 -u smartplug-backend -P $${MQTT_PASSWORD:-devpass} -t '$$SYS/broker/version' -C 1 -W 3 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-smartplug}:${POSTGRES_PASSWORD:-smartplug}@db:5432/${POSTGRES_DB:-smartplug}
+      MQTT_BROKER_HOST: mosquitto
+      MQTT_BROKER_PORT: 1883
+      MQTT_USERNAME: ${MQTT_USERNAME:-smartplug-backend}
+      MQTT_PASSWORD: ${MQTT_PASSWORD:-devpass}
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+    depends_on:
+      db:
+        condition: service_healthy
+      mosquitto:
+        condition: service_started
+    entrypoint: ["/bin/sh", "/app/docker-entrypoint.sh"]
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost/v1}
+        NEXT_PUBLIC_DEFAULT_LOCALE: ${NEXT_PUBLIC_DEFAULT_LOCALE:-fa}
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost/v1}
+    depends_on:
+      api:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./deploy/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      api:
+        condition: service_healthy
+      web:
+        condition: service_started
+
+volumes:
+  pgdata:
+  mosquitto_passwd:
+  mosquitto_data:

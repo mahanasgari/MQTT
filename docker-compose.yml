@@ -33,6 +33,7 @@ services:
         if [ ! -f /mosquitto/passwd/passwd ]; then
           mosquitto_passwd -b -c /mosquitto/passwd/passwd smartplug-backend "$${MQTT_PASSWORD:-devpass}"
         fi
+        mosquitto_passwd -b /mosquitto/passwd/passwd device "$${MQTT_DEVICE_PASSWORD:-devicepass}"
         exec mosquitto -c /mosquitto/config/mosquitto.conf
     healthcheck:
       test: ["CMD-SHELL", "mosquitto_sub -h localhost -p 1883 -u smartplug-backend -P $${MQTT_PASSWORD:-devpass} -t '$$SYS/broker/version' -C 1 -W 3 || exit 1"]
@@ -51,8 +52,8 @@ services:
       - .env
     environment:
       DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-smartplug}:${POSTGRES_PASSWORD:-smartplug}@db:5432/${POSTGRES_DB:-smartplug}
-      MQTT_BROKER_HOST: mosquitto
-      MQTT_BROKER_PORT: 1883
+      MQTT_BROKER_HOST: ${MQTT_BROKER_HOST:-localhost}
+      MQTT_BROKER_PORT: ${MQTT_BROKER_PORT:-1883}
       MQTT_USERNAME: ${MQTT_USERNAME:-smartplug-backend}
       MQTT_PASSWORD: ${MQTT_PASSWORD:-devpass}
     depends_on:

@@ -27,6 +27,7 @@ export default function AddDevicePage() {
   const [householdId, setHouseholdId] = useState("");
   const [newHousehold, setNewHousehold] = useState("");
   const [loading, setLoading] = useState(false);
+  const [localLoading, setLocalLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -45,6 +46,19 @@ export default function AddDevicePage() {
     if (s === "token") return t("stepToken");
     if (s === "link") return t("stepLink");
     return t("stepDone");
+  };
+
+  const handleLocalTest = async () => {
+    setLocalLoading(true);
+    setError("");
+    try {
+      await api.createLocalTestDevice({ name: t("title") });
+      router.push("/dashboard");
+    } catch (e) {
+      setError(e instanceof ApiError ? e.detail : t("registerFailed"));
+    } finally {
+      setLocalLoading(false);
+    }
   };
 
   const handleCreateToken = async () => {
@@ -249,6 +263,13 @@ export default function AddDevicePage() {
           {t("setupGuide")}
         </Link>
       </p>
+
+      <Card className="flex flex-col gap-3">
+        <p className="text-sm text-gray-700">{t("localTestHint")}</p>
+        <Button variant="secondary" loading={localLoading} onClick={handleLocalTest}>
+          {t("localTest")}
+        </Button>
+      </Card>
     </div>
   );
 }

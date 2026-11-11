@@ -65,6 +65,10 @@
     "noDevices": "No devices yet",
     "noDevicesHint": "Add a smart plug or wait for one to be shared with you",
     "addDevice": "Add device",
+    "localTestDevice": "Local test device",
+    "localTestHint": "Creates a virtual plug so you can test the dashboard without hardware",
+    "simulateOnline": "Simulate online",
+    "simulateOffline": "Simulate offline",
     "readGuide": "Read the setup guide",
     "devicesSection": "Devices",
     "recentEvents": "Recent Events",
@@ -88,6 +92,7 @@
   "deviceDetail": {
     "loadFailed": "Failed to load device",
     "renameFailed": "Failed to rename",
+    "simulateFailed": "Failed to simulate device",
     "voltage": "Voltage",
     "current": "Current",
     "power": "Power",
@@ -95,7 +100,10 @@
     "settings": "Settings",
     "quickLinks": "Quick Links",
     "eventHistory": "Event History",
-    "shareAccess": "Share Access"
+    "shareAccess": "Share Access",
+    "simulateOnline": "Simulate online",
+    "simulateOffline": "Simulate offline",
+    "localTestHint": "Use this if you have no ESP8266 — the plug appears online and the toggle works."
   },
   "deviceEvents": {
     "title": "Event History",
@@ -168,6 +176,8 @@
     "viewDevices": "View devices",
     "goDashboard": "Go to dashboard",
     "wifiHint": "Setting up via Wi-Fi? Use the setup guide on your phone.",
+    "localTest": "Add local test device",
+    "localTestHint": "No hardware: creates a virtual plug, links it, and brings it online.",
     "setupGuide": "setup guide",
     "tokenFailed": "Failed to create pairing token",
     "registerFailed": "Failed to register device",

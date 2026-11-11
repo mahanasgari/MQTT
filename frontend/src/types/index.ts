@@ -84,6 +84,14 @@ export interface DeviceControlRequest {
   command: string;
   value: string;
 }
+export interface DeviceSimulateRequest {
+  power?: string;
+  connectivity?: string;
+}
+export interface LocalTestDeviceRequest {
+  name?: string;
+  household_id?: string;
+}
 export interface StatusResponse {
   status: string;
 }

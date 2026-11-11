@@ -79,7 +79,7 @@ sudo chmod 640 /etc/mosquitto/passwd
 
 ```conf
 user smartplug-backend
-topic read tele/#
+topic readwrite tele/#
 topic write cmnd/#
 
 user device-SN-2026-000001

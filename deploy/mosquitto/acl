@@ -1,8 +1,13 @@
-# Backend service account — full telemetry read, command write
+# Backend — commands + telemetry (needed for local-device simulate)
 user smartplug-backend
-topic read tele/#
-topic write cmnd/#
+topic readwrite tele/#
+topic readwrite cmnd/#
 topic read $SYS/#
+
+# Optional firmware / mosquitto_pub user for any serial
+user device
+topic write tele/#
+topic read cmnd/#
 
 # Dev test device user (optional manual testing)
 user device-SP00000001

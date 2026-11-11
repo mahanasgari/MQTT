@@ -144,3 +144,24 @@ class MQTTService:
         topic = f"cmnd/{serial}/{command}"
         logger.info("Publishing %s → %s", topic, value)
         self._client.publish(topic, value, qos=1)
+
+    def publish_json(self, topic: str, payload: dict) -> None:
+        """Publish a JSON payload. No-op when the broker is disconnected."""
+        if not self.is_connected:
+            return
+        raw = json.dumps(payload)
+        logger.info("Publishing %s → %s", topic, raw)
+        self._client.publish(topic, raw, qos=1)
+
+    def publish_device_telemetry(
+        self, serial: str, *, power: str | None = None, connectivity: str | None = None
+    ) -> None:
+        if power in ("on", "off") or connectivity in ("online", "offline"):
+            state: dict = {}
+            if power in ("on", "off"):
+                state["power"] = power
+            if connectivity in ("online", "offline"):
+                state["connectivity"] = connectivity
+            self.publish_json(f"tele/{serial}/state", state)
+        if connectivity in ("online", "offline"):
+            self.publish_json(f"tele/{serial}/online", {"status": connectivity})

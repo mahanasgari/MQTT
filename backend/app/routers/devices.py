@@ -20,6 +20,8 @@ from app.schemas.device import (
     DeviceUpdate,
     DeviceLinkRequest,
     DeviceControlRequest,
+    DeviceSimulateRequest,
+    LocalTestDeviceRequest,
     DeviceRegisterRequest,
     ProvisionPairingTokenRequest,
     PairingTokenCreateRequest,
@@ -29,8 +31,9 @@ from app.schemas.device import (
 )
 from app.schemas.share import SharedUserResponse, SharedUserListResponse
 from app.config import settings
-from app.services.access_control import list_accessible_device_ids, verify_household_role
-from app.services.device_service import create_device_event
+from app.models.household import Household, HouseholdMember
+from app.services.access_control import list_accessible_device_ids, verify_household_role, list_user_households
+from app.services.device_service import create_device_event, apply_local_telemetry
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -217,8 +220,71 @@ async def create_provisioning_pairing_token(
     )
 
 
+async def _broadcast_state(request: Request, device_id: uuid.UUID, data: dict) -> None:
+    realtime = getattr(request.app.state, "realtime", None)
+    if realtime is None:
+        return
+    if "power" in data or "connectivity" in data:
+        await realtime.broadcast(device_id, "state_update", data)
+    if "connectivity" in data:
+        await realtime.broadcast(
+            device_id, "connectivity_change", {"connectivity": data["connectivity"]}
+        )
+
+
+@router.post("/local-test", response_model=DeviceResponse, status_code=status.HTTP_201_CREATED)
+async def create_local_test_device(
+    request: Request,
+    body: LocalTestDeviceRequest,
+    db: AsyncSession = Depends(get_db),
+    user: User = Depends(get_current_user),
+):
+    """One-click virtual plug for local testing (no hardware required)."""
+    household_id = body.household_id
+    if household_id is None:
+        rows = await list_user_households(db, user.id)
+        if rows:
+            household_id = rows[0]["household"].id
+        else:
+            household = Household(name="خانه محلی", timezone="Asia/Tehran")
+            db.add(household)
+            await db.flush()
+            db.add(HouseholdMember(household_id=household.id, user_id=user.id, role="admin"))
+            household_id = household.id
+    else:
+        try:
+            await verify_household_role(db, user.id, household_id, "member")
+        except PermissionError as e:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=str(e))
+
+    serial = f"LOCAL-{secrets.token_hex(4).upper()}"
+    device = Device(
+        serial=serial,
+        name=body.name or "پریز آزمایشی",
+        household_id=household_id,
+        firmware_version="virtual",
+        linked_at=datetime.now(timezone.utc),
+    )
+    db.add(device)
+    await db.flush()
+    db.add(DeviceState(device_id=device.id, power="off", connectivity="online"))
+    await create_device_event(db, device.id, "provisioned", initiator="user", initiator_id=user.id)
+    await create_device_event(db, device.id, "linked", initiator="user", initiator_id=user.id)
+    data = await apply_local_telemetry(
+        db, device, power="off", connectivity="online", initiator="user", initiator_id=user.id
+    )
+    await db.commit()
+    await db.refresh(device)
+
+    mqtt = getattr(request.app.state, "mqtt", None)
+    if mqtt is not None:
+        mqtt.publish_device_telemetry(device.serial, power="off", connectivity="online")
+    await _broadcast_state(request, device.id, data or {"power": "off", "connectivity": "online"})
+    return await _device_to_response(device)
+
+
 # --- Routes with {device_id} path parameter ---
-# These must come after /register and /pairing-token to avoid path conflicts
+# These must come after /register, /pairing-token, and /local-test to avoid path conflicts
 
 
 @router.get("/{device_id}", response_model=DeviceResponse)
@@ -385,21 +451,85 @@ async def control_device(
     body: DeviceControlRequest,
     request: Request,
     db: AsyncSession = Depends(get_db),
+    user: User = Depends(get_current_user),
     device: Device = Depends(require_device_permission("control")),
 ):
     if device.household_id is None:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail="Device not linked to a household"
         )
+    if body.command != "power" or body.value not in ("on", "off"):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Only power on/off is supported"
+        )
 
-    mqtt = request.app.state.mqtt
-    try:
-        await mqtt.publish_command(device.serial, body.command, body.value)
-    except Exception as e:
-        logger.error("Failed to publish MQTT command to %s: %s", device.serial, e)
-        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail="MQTT publish failed")
+    mqtt = getattr(request.app.state, "mqtt", None)
+    mqtt_ok = False
+    if mqtt is not None and mqtt.is_connected:
+        try:
+            await mqtt.publish_command(device.serial, body.command, body.value)
+            mqtt_ok = True
+        except Exception as e:
+            logger.error("Failed to publish MQTT command to %s: %s", device.serial, e)
 
+    is_virtual = (device.firmware_version or "").lower() == "virtual"
+    if is_virtual or not mqtt_ok:
+        data = await apply_local_telemetry(
+            db,
+            device,
+            power=body.value,
+            connectivity="online",
+            initiator="user",
+            initiator_id=user.id,
+        )
+        await db.commit()
+        if mqtt is not None:
+            mqtt.publish_device_telemetry(
+                device.serial, power=body.value, connectivity="online"
+            )
+        await _broadcast_state(request, device.id, data)
+        if not mqtt_ok and not is_virtual:
+            logger.warning("MQTT unavailable — applied local state for %s", device.serial)
+        return {"status": "accepted"}
+
+    if not mqtt_ok:
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY, detail="MQTT publish failed"
+        )
     return {"status": "accepted"}
+
+
+@router.post("/{device_id}/simulate", response_model=DeviceResponse)
+async def simulate_device(
+    body: DeviceSimulateRequest,
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+    user: User = Depends(get_current_user),
+    device: Device = Depends(require_device_permission("control")),
+):
+    """Bring a device online/offline locally (virtual plug or MQTT echo)."""
+    power = body.power if body.power in ("on", "off") else None
+    connectivity = body.connectivity if body.connectivity in ("online", "offline") else "online"
+    if power is None:
+        state = await db.get(DeviceState, device.id)
+        power = state.power if state else "off"
+
+    data = await apply_local_telemetry(
+        db,
+        device,
+        power=power,
+        connectivity=connectivity,
+        initiator="user",
+        initiator_id=user.id,
+    )
+    await db.commit()
+    await db.refresh(device)
+
+    mqtt = getattr(request.app.state, "mqtt", None)
+    if mqtt is not None:
+        mqtt.publish_device_telemetry(device.serial, power=power, connectivity=connectivity)
+    await _broadcast_state(request, device.id, data)
+    return await _device_to_response(device)
 
 
 @router.post("/{device_id}/pairing-token", response_model=PairingTokenResponse)

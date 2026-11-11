@@ -11,6 +11,7 @@ A full-stack IoT smart plug platform with cloud/local hybrid MQTT, phone-number 
 | **Docs index** | [docs/README.md](docs/README.md) |
 | **English setup** | [docs/en/START_HERE.md](docs/en/START_HERE.md) |
 | **MQTT local vs VPS** | [docs/fa/MQTT_VPS_AND_LOCAL.md](docs/fa/MQTT_VPS_AND_LOCAL.md) |
+| **VPS full deploy** | [docs/fa/VPS_DEPLOY.md](docs/fa/VPS_DEPLOY.md) |
 
 Default web locale is **Persian** (`/fa/...`; `NEXT_PUBLIC_DEFAULT_LOCALE=fa`). Dev login: http://localhost:3000/fa/login?dev=1
 
@@ -31,6 +32,8 @@ docker compose exec api alembic upgrade head
 docker compose -f docker-compose.yml -f docker-compose.remote-mqtt.yml up -d --build
 docker compose exec api alembic upgrade head
 ```
+
+**VPS (whole stack on the server):** see [docs/fa/VPS_DEPLOY.md](docs/fa/VPS_DEPLOY.md) — `docker compose -f docker-compose.prod.yml up -d --build`
 
 See [docs/fa/START_HERE.md](docs/fa/START_HERE.md) for platform admin, device registration, and troubleshooting.
 

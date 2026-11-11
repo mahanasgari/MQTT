@@ -54,6 +54,16 @@ class DeviceControlRequest(BaseModel):
     value: str
 
 
+class DeviceSimulateRequest(BaseModel):
+    power: str | None = None
+    connectivity: str | None = "online"
+
+
+class LocalTestDeviceRequest(BaseModel):
+    name: str | None = None
+    household_id: uuid.UUID | None = None
+
+
 class DeviceRegisterRequest(BaseModel):
     serial: str
     token: str

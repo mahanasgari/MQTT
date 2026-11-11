@@ -1,185 +1,182 @@
-# Graph Report - MQTT-Mobile-WEB  (2026-07-01)
+# Graph Report - MQTT-Mobile-WEB  (2026-08-19)
 
 ## Corpus Check
-- 275 files · ~92,801 words
+- 215 files · ~75,344 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2537 nodes · 3647 edges · 169 communities (140 shown, 29 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 157 edges (avg confidence: 0.76)
+- 2460 nodes · 3679 edges · 153 communities (121 shown, 32 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 115 edges (avg confidence: 0.72)
 - Token cost: 0 input · 0 output
 
+## Graph Freshness
+- Built from commit: `163df446`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
+
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Run|Run]]
-- [[_COMMUNITY_AGENTS|AGENTS.md]]
-- [[_COMMUNITY_Bool|Bool]]
-- [[_COMMUNITY_gmqtt|gmqtt]]
-- [[_COMMUNITY_auth.py|auth.py]]
-- [[_COMMUNITY_flutter|flutter]]
-- [[_COMMUNITY_load|load]]
-- [[_COMMUNITY_flutter_windows.dll|flutter_windows.dll]]
-- [[_COMMUNITY_page.tsx|page.tsx]]
-- [[_COMMUNITY_ByteStreamReader|ByteStreamReader]]
-- [[_COMMUNITY_data|data]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_api.ts|api.ts]]
-- [[_COMMUNITY_Settings|Settings]]
-- [[_COMMUNITY_int|int?]]
-- [[_COMMUNITY_gchar|gchar]]
-- [[_COMMUNITY_HomeScreen|HomeScreen]]
-- [[_COMMUNITY_links|links]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_next|next]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_Base|Base]]
-- [[_COMMUNITY_Device|Device]]
-- [[_COMMUNITY_BinaryReply|BinaryReply]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_allowJs|allowJs]]
-- [[_COMMUNITY_ws.py|ws.py]]
-- [[_COMMUNITY_auth.py|auth.py]]
-- [[_COMMUNITY_List|List]]
-- [[_COMMUNITY_DeviceCard|DeviceCard]]
-- [[_COMMUNITY_datetime|datetime]]
-- [[_COMMUNITY_flutter|flutter]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_Icon-App-29x29@1x iPad settings|Icon-App-29x29@1x iPad settings]]
-- [[_COMMUNITY_GoRouter|GoRouter]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_shares.py|shares.py]]
-- [[_COMMUNITY_macOS App Icon Platform Assets|macOS App Icon Platform Assets]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_page.tsx|page.tsx]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_flutter|flutter]]
-- [[_COMMUNITY_code|code]]
-- [[_COMMUNITY_scope|scope]]
-- [[_COMMUNITY_detail|detail]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_events|events]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_file.svg Static Asset|file.svg Static Asset]]
-- [[_COMMUNITY_.connect|.connect]]
-- [[_COMMUNITY_error|error]]
-- [[_COMMUNITY_instance|instance]]
-- [[_COMMUNITY_async|async]]
-- [[_COMMUNITY_.start|.start]]
-- [[_COMMUNITY_@pragma|@pragma]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_utils.h|utils.h]]
-- [[_COMMUNITY_name|name]]
-- [[_COMMUNITY_accept|accept]]
-- [[_COMMUNITY_name|name]]
-- [[_COMMUNITY_otpLength|otpLength]]
-- [[_COMMUNITY_flutter|flutter]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_icon|icon]]
-- [[_COMMUNITY_name|name]]
-- [[_COMMUNITY_list|list]]
-- [[_COMMUNITY_list|list]]
-- [[_COMMUNITY_ApiClient|ApiClient]]
-- [[_COMMUNITY_refresh|refresh]]
-- [[_COMMUNITY_link|link]]
-- [[_COMMUNITY_date|date]]
-- [[_COMMUNITY_null|null]]
-- [[_COMMUNITY_Sharing|Sharing]]
-- [[_COMMUNITY_metadata|metadata]]
-- [[_COMMUNITY_build_end|build_end]]
-- [[_COMMUNITY_DeviceCard|DeviceCard]]
-- [[_COMMUNITY_build_end|build_end]]
-- [[_COMMUNITY_SBFrame|SBFrame]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_Cloud MQTT Broker|Cloud MQTT Broker]]
-- [[_COMMUNITY_env.py|env.py]]
-- [[_COMMUNITY_Flutter UI Framework|Flutter UI Framework]]
-- [[_COMMUNITY_Solid Black Splash Screen 1x|Solid Black Splash Screen 1x]]
-- [[_COMMUNITY_registrar|registrar]]
-- [[_COMMUNITY_build|build]]
-- [[_COMMUNITY_FlutterEngine|FlutterEngine]]
-- [[_COMMUNITY_Runner Assets.xcassets|Runner Assets.xcassets]]
-- [[_COMMUNITY_class|class]]
-- [[_COMMUNITY_PluginRegistry|PluginRegistry]]
-- [[_COMMUNITY_MainActivity|MainActivity]]
-- [[_COMMUNITY_Dart Static Analyzer|Dart Static Analyzer]]
-- [[_COMMUNITY_Package.swift|Package.swift]]
-- [[_COMMUNITY_-registerWithRegistry|-registerWithRegistry]]
-- [[_COMMUNITY_tele{serial}online|tele/{serial}/online]]
-- [[_COMMUNITY_Home|Home]]
-- [[_COMMUNITY_flutter_export_environment.sh|flutter_export_environment.sh]]
-- [[_COMMUNITY_flutter_export_environment.sh|flutter_export_environment.sh]]
-- [[_COMMUNITY_eslintConfig|eslintConfig]]
-- [[_COMMUNITY_nextConfig|nextConfig]]
-- [[_COMMUNITY_config|config]]
-- [[_COMMUNITY_Share Permission Levels viewcontroladm|Share Permission Levels view/control/adm]]
-- [[_COMMUNITY_PostgreSQL 15|PostgreSQL 15]]
-- [[_COMMUNITY_POST authrefresh|POST /auth/refresh]]
-- [[_COMMUNITY_RFC 7807 Error Responses|RFC 7807 Error Responses]]
-- [[_COMMUNITY_pydantic|pydantic]]
-- [[_COMMUNITY_pydantic-settings|pydantic-settings]]
-- [[_COMMUNITY_Soft Delete Pattern|Soft Delete Pattern]]
-- [[_COMMUNITY_Device|Device]]
-- [[_COMMUNITY_DeviceState|DeviceState?]]
-- [[_COMMUNITY_Exception|Exception]]
-- [[_COMMUNITY_String|String?]]
-- [[_COMMUNITY_T|T]]
-- [[_COMMUNITY_Community 136|Community 136]]
-- [[_COMMUNITY_Community 137|Community 137]]
-- [[_COMMUNITY_Community 138|Community 138]]
-- [[_COMMUNITY_Community 139|Community 139]]
-- [[_COMMUNITY_Community 140|Community 140]]
-- [[_COMMUNITY_Community 141|Community 141]]
-- [[_COMMUNITY_Community 142|Community 142]]
-- [[_COMMUNITY_Community 143|Community 143]]
-- [[_COMMUNITY_Community 144|Community 144]]
-- [[_COMMUNITY_Community 145|Community 145]]
-- [[_COMMUNITY_Community 146|Community 146]]
-- [[_COMMUNITY_Community 147|Community 147]]
-- [[_COMMUNITY_Community 148|Community 148]]
-- [[_COMMUNITY_Community 149|Community 149]]
-- [[_COMMUNITY_Community 150|Community 150]]
-- [[_COMMUNITY_Community 151|Community 151]]
-- [[_COMMUNITY_Community 153|Community 153]]
-- [[_COMMUNITY_Community 155|Community 155]]
-- [[_COMMUNITY_Community 156|Community 156]]
-- [[_COMMUNITY_Community 157|Community 157]]
-- [[_COMMUNITY_Community 158|Community 158]]
-- [[_COMMUNITY_Community 159|Community 159]]
-- [[_COMMUNITY_Community 160|Community 160]]
-- [[_COMMUNITY_Community 161|Community 161]]
-- [[_COMMUNITY_Community 162|Community 162]]
-- [[_COMMUNITY_Community 163|Community 163]]
-- [[_COMMUNITY_Community 164|Community 164]]
-- [[_COMMUNITY_Community 165|Community 165]]
-- [[_COMMUNITY_Community 166|Community 166]]
-- [[_COMMUNITY_Community 167|Community 167]]
+- Win32Window
+- app_localizations.dart
+- AppDelegate
+- Docker Compose DB Service (postgres:15-alpine)
+- app_localizations_en.dart
+- [id]/page.tsx
+- device_models.dart
+- Linux Desktop CMake Project
+- index.ts
+- auth.tsx
+- websocket_client.dart
+- home_screen.dart
+- login_screen.dart
+- device_service.py
+- auth_provider.dart
+- my_application.cc
+- app_localizations_fa.dart
+- access_control.py
+- ap_setup_screen.dart
+- devDependencies
+- provisioning_provider.dart
+- device_detail_provider.dart
+- Base
+- devices.py
+- از اینجا شروع کنید — راهنمای جامع SmartPlug
+- device_shares_screen.dart
+- device_detail_screen.dart
+- compilerOptions
+- routers/admin.py
+- routers/auth.py
+- SmartPlug Production Deployment Guide
+- households.py
+- Start Here — SmartPlug Setup Guide
+- next.config.ts
+- event_provider.dart
+- iOS AppIcon Asset Catalog (AppIcon.appiconset)
+- app_router.dart
+- MQTT محلی در مقابل VPS
+- API Contract
+- macOS App Icon Platform Assets
+- ws_provider.dart
+- provisioning_models.dart
+- device_control_provider.dart
+- auth_models.dart
+- share_models.dart
+- راهنمای پیکربندی MQTT (Mosquitto)
+- SmartPlug — IoT Smart Plug Platform
+- event_history_screen.dart
+- Spinner.tsx
+- [locale]/layout.tsx
+- file.svg Static Asset
+- package:flutter_riverpod/flutter_riverpod.dart
+- app_theme.dart
+- api_client.dart
+- secure_storage.dart
+- shares.py
+- DeviceResponse
+- help_screen.dart
+- AGENTS.md — MQTT-Mobile-WEB
+- wWinMain
+- device_states table
+- share_repository.dart
+- household_models.dart
+- app_constants.dart
+- manifest.json
+- Tables
+- package:flutter/material.dart
+- راه‌اندازی سریع با Docker
+- main.py
+- share_provider.dart
+- event_repository.dart
+- device_repository.dart
+- households table
+- date_formatter.dart
+- phone_validator.dart
+- 4. Features (v1)
+- link_device_screen.dart
+- config.py
+- AGENTS.md
+- راهنمای استقرار (خلاصه فارسی)
+- استقرار روی VPS
+- ../../core/theme/app_theme.dart
+- Device Provisioning Sequence
+- Cloud/Local Hybrid Behavior
+- dashboard/page.tsx
+- Android Launcher Icon Asset Set (ic_launcher.png, mipmap density variants)
+- Black Placeholder Launch Splash
+- راهنمای پنل مدیریت پلتفرم
+- [id]/shares/page.tsx
+- Device Registration Flow
+- household_repository.dart
+- Launch Screen Customization
+- list_device_events
+- vps-up.sh
+- FlutterActivity
+- Dart Analyzer Configuration
+- event.py
+- tele/{serial}/online
+- schemas/user.py
+- docker-up.sh
+- mqtt-test.sh script
+- eslint.config.mjs
+- postcss.config.mjs
+- PostgreSQL 15
+- POST /auth/refresh
+- RFC 7807 Error Responses
+- pydantic
+- pydantic-settings
+- Soft Delete Pattern
+- alembic
+- asyncpg
+- fastapi
+- sqlalchemy[asyncio]
+- Device
+- DeviceState?
+- Exception
+- String?
+- flutter_dotenv
+- go_router
+- http
+- smartplug Mobile App
+- web_socket_channel
+- MQTT Server Setup (Mosquitto)
+- frontend/README.md
+- Server Architecture
+- smartplug
+- Device Provisioning Flow (First Boot)
+- api_error.dart
+- Quick Start with Docker
+- provisioning_repository.dart
+- auth_repository.dart
+- gmqtt
+- Product Specification — Smart Plug Platform
+- AppLocalizations
+- docker-entrypoint.sh
+- SmartPlug Documentation
+- flutter_riverpod
+- python-jose[cryptography]
 
 ## God Nodes (most connected - your core abstractions)
-1. `api` - 19 edges
-2. `compilerOptions` - 16 edges
-3. `iOS AppIcon Asset Catalog (AppIcon.appiconset)` - 16 edges
-4. `Card()` - 15 edges
-5. `Spinner()` - 15 edges
-6. `AGENTS.md — MQTT-Mobile-WEB` - 15 edges
-7. `MQTTService` - 14 edges
-8. `ApiError` - 14 edges
-9. `MQTT Server Setup (Mosquitto)` - 14 edges
-10. `SmartPlug — IoT Smart Plug Platform` - 14 edges
+1. `Base` - 26 edges
+2. `Win32Window` - 22 edges
+3. `TimestampMixin` - 21 edges
+4. `UUIDMixin` - 21 edges
+5. `api` - 19 edges
+6. `create_local_test_device()` - 17 edges
+7. `MQTTService` - 17 edges
+8. `compilerOptions` - 16 edges
+9. `iOS AppIcon Asset Catalog (AppIcon.appiconset)` - 16 edges
+10. `SoftDeleteMixin` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Flutter Mobile App (Riverpod + go_router)` --semantically_similar_to--> `smartplug Mobile App`  [INFERRED] [semantically similar]
-  README.md → mobile/pubspec.yaml
-- `Flutter Mobile App (Riverpod + go_router)` --semantically_similar_to--> `Flutter Starter Project`  [INFERRED] [semantically similar]
-  README.md → mobile/README.md
 - `Share via Phone Number` --semantically_similar_to--> `Sharing`  [INFERRED] [semantically similar]
   AGENTS.md → product_spec.md
 - `Cloud MQTT Broker` --semantically_similar_to--> `MQTT Broker (EMQX/Mosquitto)`  [INFERRED] [semantically similar]
   architecture.md → AGENTS.md
 - `Phone-number OTP Authentication` --semantically_similar_to--> `JWT Authentication`  [INFERRED] [semantically similar]
   AGENTS.md → architecture.md
+- `Cloud/Local Dual MQTT` --semantically_similar_to--> `Cloud/Local Hybrid Behavior`  [INFERRED] [semantically similar]
+  AGENTS.md → architecture.md
+- `Event Sourcing` --rationale_for--> `Materialized State vs Event History`  [INFERRED]
+  AGENTS.md → db_schema.md
 
 ## Import Cycles
 - None detected.
@@ -188,488 +185,443 @@
 - **Real-time State Pipeline** — product_spec_md_device, api_contract_md_mqtt_tele_state, agents_md_fastapi_backend, api_contract_md_ws_device_state [INFERRED 0.95]
 - **End-to-End Device Provisioning** — product_spec_md_device_provisioning, architecture_md_provisioning_flow, db_schema_md_pairing_tokens, api_contract_md_patch_devices_link [INFERRED 0.85]
 - **Phone OTP to JWT Auth Stack** — agents_md_phone_otp_auth, api_contract_md_post_auth_send_otp, api_contract_md_post_auth_verify_otp, architecture_md_jwt_auth [INFERRED 0.95]
-- **SmartPlug Full-Stack Layers** — readme_fastapi_backend, readme_nextjs_frontend, readme_flutter_mobile, readme_mqtt_protocol [EXTRACTED 1.00]
 - **Backend Python Dependency Stack** — backend_requirements_fastapi, backend_requirements_uvicorn, backend_requirements_sqlalchemy, backend_requirements_asyncpg, backend_requirements_alembic, backend_requirements_gmqtt, backend_requirements_python_jose [INFERRED 0.85]
 - **Backend Docker Compose Stack** — backend_docker_compose_app_service, backend_docker_compose_db_service, backend_docker_compose_pgdata_volume, backend_docker_compose_port_5433 [EXTRACTED 1.00]
-- **smartplug Multi-Platform Application Targets** — linux_cmakelists_smartplug_binary, windows_cmakelists_smartplug_binary, web_index_html_smartplug [INFERRED 0.95]
-- **Flutter Desktop CMake Build Pipeline** — linux_cmakelists, flutter_cmakelists_linux_flutter_library, runner_cmakelists_linux_executable, windows_cmakelists, flutter_cmakelists_windows_flutter_library, runner_cmakelists_windows_executable [INFERRED 0.85]
-- **Next.js Starter Template UI Icons** — public_file, public_globe, public_window [INFERRED 0.85]
-- **Next.js and Vercel Branding Logos** — public_next, public_vercel, public_next_wordmark, public_vercel_triangle [INFERRED 0.85]
-- **ic_launcher.png across Android mipmap density buckets** — mipmap_hdpi_ic_launcher_launcher_icon_asset_set, concept_mipmap_density_variants [EXTRACTED 1.00]
-- **iOS AppIcon size variants (iPhone, iPad, App Store)** — appicon_appiconset_icon_app_1024x1024_1x, appicon_appiconset_icon_app_20x20_1x, appicon_appiconset_icon_app_20x20_2x, appicon_appiconset_icon_app_20x20_3x, appicon_appiconset_icon_app_29x29_1x, appicon_appiconset_icon_app_29x29_2x, appicon_appiconset_icon_app_29x29_3x, appicon_appiconset_icon_app_40x40_1x, appicon_appiconset_icon_app_40x40_2x, appicon_appiconset_icon_app_40x40_3x, appicon_appiconset_icon_app_60x60_2x, appicon_appiconset_icon_app_60x60_3x, appicon_appiconset_icon_app_76x76_1x, appicon_appiconset_icon_app_76x76_2x, appicon_appiconset_icon_app_83_5x83_5_2x [EXTRACTED 1.00]
-- **iOS LaunchImage.imageset Splash Screens** — launchimage_imageset_launchimage, launchimage_imageset_launchimage_2x, launchimage_imageset_launchimage_3x [EXTRACTED 1.00]
-- **macOS AppIcon.appiconset Multi-Resolution Icons** — appicon_appiconset_app_icon_16, appicon_appiconset_app_icon_32, appicon_appiconset_app_icon_64, appicon_appiconset_app_icon_128, appicon_appiconset_app_icon_256, appicon_appiconset_app_icon_512, appicon_appiconset_app_icon_1024 [EXTRACTED 1.00]
-- **Flutter Web PWA and Favicon Icons** — web_favicon, icons_icon_192, icons_icon_512, icons_icon_maskable_192, icons_icon_maskable_512 [EXTRACTED 1.00]
+- **smartplug Multi-Platform Application Targets** — mobile_linux_cmakelists_smartplug_binary, mobile_windows_cmakelists_smartplug_binary, mobile_web_index_html_smartplug [INFERRED 0.95]
+- **Flutter Desktop CMake Build Pipeline** — mobile_linux_cmakelists, mobile_linux_flutter_cmakelists_linux_flutter_library, mobile_linux_runner_cmakelists_linux_executable, mobile_windows_cmakelists, mobile_windows_flutter_cmakelists_windows_flutter_library, mobile_windows_runner_cmakelists_windows_executable [INFERRED 0.85]
+- **Next.js Starter Template UI Icons** — frontend_public_file, frontend_public_globe, frontend_public_window [INFERRED 0.85]
+- **Next.js and Vercel Branding Logos** — frontend_public_next, frontend_public_vercel, frontend_public_next_wordmark, frontend_public_vercel_triangle [INFERRED 0.85]
+- **ic_launcher.png across Android mipmap density buckets** — mobile_android_app_src_main_res_mipmap_hdpi_ic_launcher_launcher_icon_asset_set, concept_mipmap_density_variants [EXTRACTED 1.00]
+- **iOS AppIcon size variants (iPhone, iPad, App Store)** — mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_1024x1024_1x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_20x20_1x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_20x20_2x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_20x20_3x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_29x29_1x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_29x29_2x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_29x29_3x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_40x40_1x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_40x40_2x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_40x40_3x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_60x60_2x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_60x60_3x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_76x76_1x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_76x76_2x, mobile_ios_runner_assets_xcassets_appicon_appiconset_icon_app_83_5x83_5_2x [EXTRACTED 1.00]
+- **iOS LaunchImage.imageset Splash Screens** — mobile_ios_runner_assets_xcassets_launchimage_imageset_launchimage, mobile_ios_runner_assets_xcassets_launchimage_imageset_launchimage_2x, mobile_ios_runner_assets_xcassets_launchimage_imageset_launchimage_3x [EXTRACTED 1.00]
+- **macOS AppIcon.appiconset Multi-Resolution Icons** — mobile_macos_runner_assets_xcassets_appicon_appiconset_app_icon_16, mobile_macos_runner_assets_xcassets_appicon_appiconset_app_icon_32, mobile_macos_runner_assets_xcassets_appicon_appiconset_app_icon_64, mobile_macos_runner_assets_xcassets_appicon_appiconset_app_icon_128, mobile_macos_runner_assets_xcassets_appicon_appiconset_app_icon_256, mobile_macos_runner_assets_xcassets_appicon_appiconset_app_icon_512, mobile_macos_runner_assets_xcassets_appicon_appiconset_app_icon_1024 [EXTRACTED 1.00]
+- **Flutter Web PWA and Favicon Icons** — mobile_web_favicon, mobile_web_icons_icon_192, mobile_web_icons_icon_512, mobile_web_icons_icon_maskable_192, mobile_web_icons_icon_maskable_512 [EXTRACTED 1.00]
 
-## Communities (169 total, 29 thin omitted)
+## Communities (153 total, 32 thin omitted)
 
-### Community 0 - "Run"
-Cohesion: 0.08
-Nodes (40): ProcessExternalWindowMessage(), FlutterViewController(), HandleTopLevelWindowProc(), view_id(), DartProject, FlutterViewId, HWND, LPARAM (+32 more)
+### Community 0 - "Win32Window"
+Cohesion: 0.06
+Nodes (52): RegisterPlugins(), DartProject, HWND, LPARAM, LRESULT, UINT, WPARAM, FlutterWindow (+44 more)
 
-### Community 1 - "AGENTS.md"
+### Community 1 - "app_localizations.dart"
 Cohesion: 0.01
-Nodes (149): app_localizations_en.dart, app_localizations_fa.dart, accept, accessLabel, addDevice, addShare, apConnectBody, apConnected (+141 more)
+Nodes (155): app_localizations_en.dart, app_localizations_fa.dart, class, accept, accessLabel, addDevice, addDeviceHint, addShare (+147 more)
 
-### Community 2 - "Bool"
+### Community 2 - "AppDelegate"
 Cohesion: 0.06
-Nodes (25): Any, Bool, Cocoa, Flutter, RegisterGeneratedPlugins(), FlutterAppDelegate, FlutterImplicitEngineBridge, FlutterImplicitEngineDelegate (+17 more)
+Nodes (27): Any, Cocoa, Flutter, FlutterAppDelegate, FlutterImplicitEngineBridge, FlutterImplicitEngineDelegate, FlutterMacOS, FlutterPluginRegistry (+19 more)
 
-### Community 3 - "gmqtt"
-Cohesion: 0.15
-Nodes (14): Docker Compose App Service (FastAPI uvicorn), Docker Compose DB Service (postgres:15-alpine), pgdata Docker Volume, PostgreSQL Port Mapping 5433:5432, alembic, asyncpg, fastapi, sqlalchemy[asyncio] (+6 more)
+### Community 3 - "Docker Compose DB Service (postgres:15-alpine)"
+Cohesion: 0.40
+Nodes (5): Docker Compose App Service (FastAPI uvicorn), Docker Compose DB Service (postgres:15-alpine), pgdata Docker Volume, PostgreSQL Port Mapping 5433:5432, uvicorn[standard]
 
-### Community 4 - "auth.py"
-Cohesion: 0.07
-Nodes (41): BaseModel, AdminDeviceCreateRequest, AdminDeviceListResponse, AdminDeviceUpdateRequest, AdminEventListResponse, AdminHouseholdListResponse, AdminHouseholdResponse, AdminPairingTokenRequest (+33 more)
+### Community 4 - "app_localizations_en.dart"
+Cohesion: 0.01
+Nodes (140): accept, accessLabel, addDevice, addDeviceHint, addShare, allDevices, apConnectBody, apConnected (+132 more)
 
-### Community 5 - "flutter"
+### Community 5 - "[id]/page.tsx"
 Cohesion: 0.11
-Nodes (16): BinaryMessenger, ResizeChannel(), SetChannelWarnsOnOverflow(), flutter(), flutter(), flutter(), flutter(), flutter() (+8 more)
+Nodes (23): AddDevicePage(), Step, STEPS, EVENT_COLORS, SECTION_IDS, PowerToggle(), PowerToggleProps, Button() (+15 more)
 
-### Community 6 - "load"
+### Community 6 - "device_models.dart"
 Cohesion: 0.06
-Nodes (29): apiBaseUrl, deviceApConfigureUrl, mqttBrokerHost, mqttBrokerPort, wsBaseUrl, int get, command, connectivity (+21 more)
+Nodes (29): int get, apiBaseUrl, deviceApConfigureUrl, mqttBrokerHost, mqttBrokerPort, wsBaseUrl, command, connectivity (+21 more)
 
-### Community 7 - "flutter_windows.dll"
+### Community 7 - "Linux Desktop CMake Project"
 Cohesion: 0.09
-Nodes (30): flutter_assemble Custom Target, flutter_windows.dll, flutter_wrapper_app Static Library, flutter_wrapper_plugin Static Library, GTK GLIB GIO PkgConfig Dependencies, libflutter_linux_gtk.so, Flutter Linux GTK Library Build, Flutter tool_backend.bat (+22 more)
+Nodes (30): Linux Desktop CMake Project, GTK Application ID com.example.smartplug, APPLY_STANDARD_SETTINGS Build Function, GTK+ 3.0 Dependency, Linux Relocatable Install Bundle, smartplug Linux Executable, flutter_assemble Custom Target, GTK GLIB GIO PkgConfig Dependencies (+22 more)
 
-### Community 8 - "page.tsx"
+### Community 8 - "index.ts"
 Cohesion: 0.09
-Nodes (22): از اینجا شروع کنید — راهنمای جامع SmartPlug, اسکریپت‌های آماده, الف) MQTT محلی (Mosquitto داخل Docker), انتشار روی VPS, انتشار وضعیت آزمایشی (local), ب) MQTT روی VPS (بروکر از راه دور), حالت MQTT: محلی یا VPS, روش الف — از پنل کاربر (+14 more)
+Nodes (35): request(), tryRefresh(), AdminDeviceCreateRequest, AdminDeviceListResponse, AdminDeviceUpdateRequest, AdminEventListResponse, AdminHouseholdListResponse, AdminPairingTokenRequest (+27 more)
 
-### Community 9 - "ByteStreamReader"
-Cohesion: 0.20
-Nodes (26): ByteStreamReader, ByteStreamWriter, DecodeAndProcessResponseEnvelopeInternal(), DecodeMessageInternal(), DecodeMethodCallInternal(), EncodedTypeForValue(), EncodeErrorEnvelopeInternal(), EncodeMessageInternal() (+18 more)
+### Community 9 - "auth.tsx"
+Cohesion: 0.12
+Nodes (21): AdminLayout(), DashboardPage(), DeviceDetailPage(), AuthLayout(), HelpPanel(), HelpPanelProps, SECTION_KEYS, LanguageSwitcher() (+13 more)
 
-### Community 10 - "data"
+### Community 10 - "websocket_client.dart"
 Cohesion: 0.07
 Nodes (26): _channel, connect, _controller, data, deviceId, disconnect, dispose, _disposed (+18 more)
 
-### Community 11 - "build"
-Cohesion: 0.12
-Nodes (16): build, build, createState, HomeScreen, _HomeScreenState, _selectedHouseholdId, ../../providers/device_list_provider.dart, ../../providers/household_provider.dart (+8 more)
+### Community 11 - "home_screen.dart"
+Cohesion: 0.15
+Nodes (15): ConsumerState, ConsumerStatefulWidget, createState, HomeScreen, _HomeScreenState, _selectedHouseholdId, ApSetupScreen, _ApSetupScreenState (+7 more)
 
-### Community 12 - "api.ts"
+### Community 12 - "login_screen.dart"
 Cohesion: 0.09
-Nodes (34): request(), tryRefresh(), AdminDeviceCreateRequest, AdminDeviceListResponse, AdminDeviceUpdateRequest, AdminEventListResponse, AdminHouseholdListResponse, AdminPairingTokenRequest (+26 more)
+Nodes (26): authProvider, build, _buildOtpStep, _buildPhoneStep, _countdown, createState, dispose, _error (+18 more)
 
-### Community 13 - "Settings"
-Cohesion: 0.07
-Nodes (18): Settings, register_exception_handlers(), configure_logging(), lifespan(), BaseSettings, FastAPI, _request, DevOtpResponse (+10 more)
+### Community 13 - "device_service.py"
+Cohesion: 0.11
+Nodes (23): apply_local_telemetry(), create_device_event(), get_device_by_serial(), handle_availability_message(), handle_event_message(), handle_state_message(), AsyncSession, Device (+15 more)
 
-### Community 14 - "int?"
+### Community 14 - "auth_provider.dart"
 Cohesion: 0.09
 Nodes (23): ../../data/repositories/auth_repository.dart, int?, AuthNotifier, AuthState, AuthStatus, build, _checkAuth, copyWith (+15 more)
 
-### Community 15 - "gchar"
-Cohesion: 0.11
-Nodes (22): FlPluginRegistry, fl_register_plugins(), FlView, GApplication, gboolean, gchar, GObject, GtkApplication (+14 more)
+### Community 15 - "my_application.cc"
+Cohesion: 0.09
+Nodes (22): FlPluginRegistry, FlView, GApplication, gboolean, gchar, GObject, GtkApplication, fl_register_plugins() (+14 more)
 
-### Community 16 - "HomeScreen"
+### Community 16 - "app_localizations_fa.dart"
 Cohesion: 0.01
-Nodes (136): app_localizations.dart, accept, accessLabel, addDevice, addShare, apConnectBody, apConnected, apConnectTitle (+128 more)
+Nodes (141): app_localizations.dart, accept, accessLabel, addDevice, addDeviceHint, addShare, allDevices, apConnectBody (+133 more)
 
-### Community 17 - "links"
-Cohesion: 0.10
-Nodes (19): Providers(), AuthLayout(), HelpPanel(), HelpPanelProps, SECTION_KEYS, links, Navbar(), DashboardPage() (+11 more)
+### Community 17 - "access_control.py"
+Cohesion: 0.17
+Nodes (22): get_db(), get_current_user(), AsyncSession, User, require_device_permission(), require_platform_admin(), get_device_shares(), get_effective_permission() (+14 more)
 
-### Community 18 - "build"
-Cohesion: 0.06
-Nodes (43): ConsumerState, ConsumerStatefulWidget, ../../../data/models/provisioning_models.dart, package:go_router/go_router.dart, ../../providers/auth_provider.dart, ../../providers/provisioning_provider.dart, provisioningProvider, ApSetupScreen (+35 more)
+### Community 18 - "ap_setup_screen.dart"
+Cohesion: 0.07
+Nodes (31): ../../../data/models/provisioning_models.dart, provisioningProvider, build, _buildConnectToAp, _buildFailed, _buildInstructions, _buildSendingCreds, _buildStepContent (+23 more)
 
-### Community 19 - "next"
-Cohesion: 0.08
-Nodes (24): dependencies, next, next-intl, react, react-dom, devDependencies, eslint, eslint-config-next (+16 more)
+### Community 19 - "devDependencies"
+Cohesion: 0.05
+Nodes (37): eslint, eslint-config-next, dependencies, next, next-intl, react, react-dom, devDependencies (+29 more)
 
-### Community 20 - "build"
+### Community 20 - "provisioning_provider.dart"
 Cohesion: 0.09
 Nodes (21): dart:async, ../../data/repositories/provisioning_repository.dart, build, claimDevice, claimedDeviceId, clearError, error, fetchPairingToken (+13 more)
 
-### Community 21 - "build"
-Cohesion: 0.09
-Nodes (21): ../../data/repositories/device_repository.dart, ../models/device_models.dart, applyLiveUpdate, build, _deviceId, fetch, refresh, _repo (+13 more)
+### Community 21 - "device_detail_provider.dart"
+Cohesion: 0.11
+Nodes (16): ../../../data/repositories/device_repository.dart, applyLiveUpdate, build, DeviceDetailNotifier, _deviceId, fetch, refresh, _repo (+8 more)
 
 ### Community 22 - "Base"
-Cohesion: 0.16
-Nodes (18): datetime, DeclarativeBase, AutomationRule, Base, SoftDeleteMixin, TimestampMixin, UUIDMixin, Device (+10 more)
+Cohesion: 0.31
+Nodes (18): AutomationRule, Base, SoftDeleteMixin, TimestampMixin, UUIDMixin, Device, DeviceEvent, DeviceNetworkConfig (+10 more)
 
-### Community 23 - "Device"
-Cohesion: 0.22
-Nodes (15): Device, DeviceControlRequest, DeviceRegisterRequest, DeviceResponse, DeviceUpdate, control_device(), create_device_pairing_token(), delete_device() (+7 more)
+### Community 23 - "devices.py"
+Cohesion: 0.10
+Nodes (51): _broadcast_state(), control_device(), create_device_pairing_token(), create_local_test_device(), create_provisioning_pairing_token(), delete_device(), _device_to_response(), get_device() (+43 more)
 
-### Community 24 - "BinaryReply"
-Cohesion: 0.11
-Nodes (16): BinaryMessageHandler, BinaryReply, BinaryMessengerImpl(), ForwardToHandler(), RegisterTexture(), ReplyManager(), Send(), SendResponseData() (+8 more)
+### Community 24 - "از اینجا شروع کنید — راهنمای جامع SmartPlug"
+Cohesion: 0.09
+Nodes (23): از اینجا شروع کنید — راهنمای جامع SmartPlug, اسکریپت‌های آماده, الف) MQTT محلی (Mosquitto داخل Docker), انتشار روی VPS, انتشار وضعیت آزمایشی (local), ب) MQTT روی VPS (بروکر از راه دور), حالت MQTT: محلی یا VPS, روش الف — از پنل کاربر (سریال واقعی) (+15 more)
 
-### Community 25 - "build"
+### Community 25 - "device_shares_screen.dart"
 Cohesion: 0.11
 Nodes (19): ../../../core/utils/phone_validator.dart, deviceShareListProvider, build, _buildCreateForm, _confirmRevoke, createState, _creating, deviceId (+11 more)
 
-### Community 26 - "build"
-Cohesion: 0.11
-Nodes (22): ConsumerWidget, build, _ControlTab, createState, device, DeviceDetailScreen, _DeviceDetailScreenState, deviceId (+14 more)
+### Community 26 - "device_detail_screen.dart"
+Cohesion: 0.12
+Nodes (18): wsProvider, createState, device, DeviceDetailScreen, _DeviceDetailScreenState, deviceId, dispose, _infoRow (+10 more)
 
-### Community 27 - "allowJs"
-Cohesion: 0.10
-Nodes (19): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+11 more)
+### Community 27 - "compilerOptions"
+Cohesion: 0.07
+Nodes (28): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+20 more)
 
-### Community 28 - "ws.py"
-Cohesion: 0.13
-Nodes (39): AdminDeviceCreateRequest, AdminDeviceUpdateRequest, AdminPairingTokenRequest, require_platform_admin(), AsyncSession, DeviceLinkRequest, HouseholdCreate, HouseholdUpdate (+31 more)
+### Community 28 - "routers/admin.py"
+Cohesion: 0.17
+Nodes (28): AdminDeviceCreateRequest, AdminDeviceUpdateRequest, AdminPairingTokenRequest, admin_create_device(), admin_create_pairing_token(), admin_list_devices(), admin_list_events(), admin_list_households() (+20 more)
 
-### Community 29 - "auth.py"
-Cohesion: 0.15
-Nodes (19): get_current_user(), HTTPAuthorizationCredentials, RefreshTokenRequest, refresh_token_endpoint(), send_otp(), verify_otp_endpoint(), SendOtpRequest, create_access_token() (+11 more)
+### Community 29 - "routers/auth.py"
+Cohesion: 0.12
+Nodes (32): AsyncSession, post, refresh_token_endpoint(), send_otp(), verify_otp_endpoint(), DevOtpResponse, get_dev_otp(), AsyncSession (+24 more)
 
-### Community 30 - "List"
+### Community 30 - "SmartPlug Production Deployment Guide"
 Cohesion: 0.06
 Nodes (35): Application, Backend (`/opt/smartplug/backend/.env`), Database backup, Deploy new API version, Deployment procedure, Docker deployment strategy, Document map, Environment variables (+27 more)
 
-### Community 31 - "DeviceCard"
-Cohesion: 0.15
-Nodes (16): DashboardDeviceCard(), DashboardDeviceCardProps, relativeTime(), DeviceCard(), DeviceCardProps, HouseholdSelector(), HouseholdSelectorProps, PowerBadge() (+8 more)
+### Community 31 - "households.py"
+Cohesion: 0.20
+Nodes (19): create_household(), delete_household(), get_household(), list_households(), AsyncSession, delete, get, patch (+11 more)
 
-### Community 32 - "datetime"
-Cohesion: 0.31
-Nodes (10): DeviceEvent, create_device_event(), get_device_by_serial(), handle_availability_message(), handle_event_message(), handle_state_message(), Business logic for device state and event persistence. Called by MQTT callbacks, update_device_state() (+2 more)
+### Community 32 - "Start Here — SmartPlug Setup Guide"
+Cohesion: 0.10
+Nodes (20): 1. Environment setup, 2. Choose MQTT mode, 3. Health check, 4. Login and platform admin, 5. Register a device, 6. MQTT test, 7. Stop, Listen for commands (+12 more)
 
-### Community 33 - "flutter"
-Cohesion: 0.15
-Nodes (13): flutter(), GetRegistrarForPlugin(), AddPlugin(), ClearPlugins(), GetInstance(), OnRegistrarDestroyed(), PluginRegistrar(), FlutterDesktopPluginRegistrarRef (+5 more)
-
-### Community 34 - "build"
+### Community 34 - "event_provider.dart"
 Cohesion: 0.12
 Nodes (17): ../../data/models/event_models.dart, ../../data/repositories/event_repository.dart, FamilyNotifier, build, copyWith, currentDeviceId, error, EventListNotifier (+9 more)
 
-### Community 35 - "Icon-App-29x29@1x iPad settings"
+### Community 35 - "iOS AppIcon Asset Catalog (AppIcon.appiconset)"
 Cohesion: 0.12
-Nodes (17): Flutter Default App Icon (blue geometric F logo on white), Icon-App-1024x1024@1x (iOS marketing / App Store), Icon-App-20x20@1x (iPad notification), Icon-App-20x20@2x (iPhone/iPad notification), Icon-App-20x20@3x (iPhone notification), Icon-App-29x29@1x (iPad settings), Icon-App-29x29@2x (iPhone/iPad settings), Icon-App-29x29@3x (iPhone settings) (+9 more)
+Nodes (17): Flutter Default App Icon (blue geometric F logo on white), iOS AppIcon Asset Catalog (AppIcon.appiconset), Icon-App-1024x1024@1x (iOS marketing / App Store), Icon-App-20x20@1x (iPad notification), Icon-App-20x20@2x (iPhone/iPad notification), Icon-App-20x20@3x (iPhone notification), Icon-App-29x29@1x (iPad settings), Icon-App-29x29@2x (iPhone/iPad settings) (+9 more)
 
-### Community 36 - "GoRouter"
+### Community 36 - "app_router.dart"
 Cohesion: 0.10
-Nodes (21): GoRouter, build, SmartPlugApp, NavigatorState, ../presentation/providers/auth_provider.dart, ../presentation/screens/device_detail/device_detail_screen.dart, ../presentation/screens/events/event_history_screen.dart, ../presentation/screens/help/help_screen.dart (+13 more)
+Nodes (21): GoRouter, build, SmartPlugApp, localeProvider, appRouterProvider, isLoggedIn, _rootNavigatorKey, NavigatorState (+13 more)
 
-### Community 37 - "build"
-Cohesion: 0.10
-Nodes (21): build, _buildOtpStep, _buildPhoneStep, _countdown, createState, dispose, _error, _handleSendOtp (+13 more)
+### Community 37 - "MQTT محلی در مقابل VPS"
+Cohesion: 0.12
+Nodes (16): MQTT محلی در مقابل VPS, اجرا, اجرا, تست, تست, تنظیم `.env`, تنظیم `.env`, حالت Local (Mosquitto در Docker) (+8 more)
 
-### Community 38 - "shares.py"
+### Community 38 - "API Contract"
 Cohesion: 0.06
 Nodes (35): 1. Authentication, 2. Households, 3. Devices, 4. Real-time State, 5. Events, 6. Sharing, 7. MQTT Topics, 8. Error Responses (+27 more)
 
 ### Community 39 - "macOS App Icon Platform Assets"
 Cohesion: 0.14
-Nodes (15): Flutter Logo macOS App Icon (1024px), Flutter Logo macOS App Icon (128px), Flutter Logo macOS App Icon (16px), Flutter Logo macOS App Icon (256px), Flutter Logo macOS App Icon (32px), Flutter Logo macOS App Icon (512px), Flutter Logo macOS App Icon (64px), macOS App Icon Platform Assets (+7 more)
+Nodes (15): macOS App Icon Platform Assets, Flutter Default Framework Branding, Flutter Web PWA Icon Platform Assets, Flutter Logo macOS App Icon (1024px), Flutter Logo macOS App Icon (128px), Flutter Logo macOS App Icon (16px), Flutter Logo macOS App Icon (256px), Flutter Logo macOS App Icon (32px) (+7 more)
 
-### Community 40 - "build"
-Cohesion: 0.12
-Nodes (15): ../../core/network/websocket_client.dart, WebSocketClient, build, _client, connect, disconnect, isConnected, reconnectAfterLogin (+7 more)
-
-### Community 41 - "page.tsx"
-Cohesion: 0.11
-Nodes (20): Step, STEPS, PowerToggle(), PowerToggleProps, EVENT_COLORS, api, ApiError, formatPhoneError() (+12 more)
-
-### Community 42 - "build"
-Cohesion: 0.12
-Nodes (23): _showRenameDialog, device_detail_provider.dart, device_list_provider.dart, DeviceState, Notifier, _applyOptimisticUpdate, build, clearError (+15 more)
-
-### Community 43 - "flutter"
-Cohesion: 0.19
-Nodes (7): flutter(), flutter(), flutter(), flutter(), flutter(), flutter(), optional
-
-### Community 44 - "code"
-Cohesion: 0.14
-Nodes (13): accessToken, code, expiresIn, expiresInSeconds, fromJson, phone, refreshToken, retryAfterSeconds (+5 more)
-
-### Community 45 - "scope"
-Cohesion: 0.14
-Nodes (13): createdAt, fromJson, granteePhone, id, permission, scope, scopeId, Share (+5 more)
-
-### Community 46 - "detail"
-Cohesion: 0.11
-Nodes (18): API Reference, Architecture Overview, Backend (`backend/.env`), Docker Compose (full stack), Documentation, Environment Variables, Frontend (`frontend/.env.local`), Key Endpoints (+10 more)
-
-### Community 47 - "build"
-Cohesion: 0.18
-Nodes (12): build, createState, deviceId, dispose, EventHistoryScreen, _EventHistoryScreenState, _eventTile, initState (+4 more)
-
-### Community 48 - "events"
-Cohesion: 0.15
-Nodes (12): DeviceEvent, deviceId, events, fromJson, id, initiator, initiatorId, metadata (+4 more)
-
-### Community 49 - "build"
-Cohesion: 0.01
-Nodes (135): accept, accessLabel, addDevice, addShare, apConnectBody, apConnected, apConnectTitle, apCredsHint (+127 more)
-
-### Community 50 - "file.svg Static Asset"
-Cohesion: 0.29
-Nodes (13): create-next-app Default Public Assets, file.svg Static Asset, Document Icon with Folded Corner and Text Lines, globe.svg Static Asset, Globe World Icon with Meridians and Parallels, 16x16 Gray (#666) UI Icon Style, next.svg Static Asset, Next.js Wordmark Logo (+5 more)
-
-### Community 51 - ".connect"
-Cohesion: 0.20
-Nodes (8): app.dart, load, main, package:flutter_dotenv/flutter_dotenv.dart, package:flutter_riverpod/flutter_riverpod.dart, package:flutter_test/flutter_test.dart, package:smartplug/app.dart, main
-
-### Community 52 - "error"
-Cohesion: 0.15
-Nodes (12): static const Color, static ThemeData get, AppTheme, error, light, off, offline, on (+4 more)
-
-### Community 53 - "instance"
-Cohesion: 0.22
-Nodes (8): ../../core/constants/api_constants.dart, ../../core/storage/secure_storage.dart, ../../data/models/api_error.dart, _client, _headers, instance, _tryRefresh, static final ApiClient
-
-### Community 54 - "async"
-Cohesion: 0.12
-Nodes (14): package:shared_preferences/shared_preferences.dart, build, _load, _localeKey, setLocale, static Future, _accessTokenKey, async (+6 more)
-
-### Community 55 - ".start"
-Cohesion: 0.33
-Nodes (8): create_share(), incoming_shares(), list_shares(), _share_to_response(), update_share(), ShareCreate, ShareResponse, ShareUpdate
-
-### Community 56 - "@pragma"
-Cohesion: 0.20
-Nodes (10): @pragma, dart:io, _PluginRegistrant, register, package:path_provider_linux/path_provider_linux.dart, package:path_provider_windows/path_provider_windows.dart, package:shared_preferences_android/shared_preferences_android.dart, package:shared_preferences_foundation/shared_preferences_foundation.dart (+2 more)
-
-### Community 57 - "build"
-Cohesion: 0.18
-Nodes (7): SECTION_IDS, AdminHouseholdResponse, AdminStatsResponse, AdminUserResponse, Card(), CardProps, Spinner()
-
-### Community 58 - "build"
+### Community 40 - "ws_provider.dart"
 Cohesion: 0.13
-Nodes (15): AGENTS.md — MQTT-Mobile-WEB, Backend commands (from `backend/`), Backend gotchas, Frontend commands (from `frontend/`), Frontend gotchas, Full stack Docker (repo root — recommended for MQTT testing), Key constraints, Mobile commands (from `mobile/`) (+7 more)
+Nodes (14): ../../core/network/websocket_client.dart, WebSocketClient, build, _client, connect, disconnect, isConnected, reconnectAfterLogin (+6 more)
 
-### Community 59 - "utils.h"
-Cohesion: 0.36
-Nodes (6): _In_, _In_opt_, wWinMain(), CreateAndAttachConsole(), GetCommandLineArguments(), Utf8FromUtf16()
-
-### Community 60 - "name"
-Cohesion: 0.18
-Nodes (10): createdAt, deviceCount, fromJson, Household, HouseholdCreateRequest, id, name, role (+2 more)
-
-### Community 61 - "accept"
-Cohesion: 0.18
-Nodes (10): ../models/share_models.dart, accept, _api, create, decline, listDeviceShares, listIncoming, listMyShares (+2 more)
-
-### Community 62 - "name"
-Cohesion: 0.18
-Nodes (10): background_color, description, display, icons, name, orientation, prefer_related_applications, short_name (+2 more)
-
-### Community 63 - "otpLength"
-Cohesion: 0.20
-Nodes (9): AppConstants, defaultPageSize, httpTimeout, otpExpireSeconds, otpLength, otpRetryAfterSeconds, wsReconnectDelay, static const Duration (+1 more)
-
-### Community 64 - "flutter"
-Cohesion: 0.14
-Nodes (12): flutter(), flutter(), flutter(), flutter(), flutter(), flutter(), flutter(), flutter() (+4 more)
-
-### Community 65 - "build"
-Cohesion: 0.15
-Nodes (13): `automation_rules` (future), `device_events`, `device_network_config`, `device_states`, `devices`, `household_members`, `households`, `otp_codes` (+5 more)
-
-### Community 66 - "icon"
-Cohesion: 0.07
-Nodes (28): _InfoTab, _ReadingsTab, IconData, package:flutter/material.dart, icon, onTap, _OptionCard, ProvisioningScreen (+20 more)
-
-### Community 67 - "name"
+### Community 41 - "provisioning_models.dart"
 Cohesion: 0.13
 Nodes (14): ApSetupStep, DeviceLinkRequest, DeviceRegisterRequest, expiresAt, fromJson, householdId, id, name (+6 more)
 
-### Community 68 - "list"
-Cohesion: 0.16
-Nodes (10): Queue, _parse_uuids(), WebSocket endpoint for real-time device state push.  Clients connect with a JWT, _resolve_device_ids(), websocket_endpoint(), In-memory WebSocket connection and subscription manager.  Tracks authenticated W, Manages WebSocket connections and device-subscription mappings.      Each connec, Enqueue *data* for every connection subscribed to *device_id*. (+2 more)
-
-### Community 69 - "list"
-Cohesion: 0.13
-Nodes (18): AsyncNotifier, ../../data/models/share_models.dart, ../../data/repositories/share_repository.dart, List, DeviceDetailNotifier, DeviceListNotifier, HouseholdListNotifier, accept (+10 more)
-
-### Community 70 - "ApiClient"
-Cohesion: 0.33
-Nodes (5): ../../core/constants/app_constants.dart, ../models/event_models.dart, _api, EventRepository, getDeviceEvents
-
-### Community 71 - "refresh"
-Cohesion: 0.15
-Nodes (9): AdminLayout(), LanguageSwitcher(), { Link, redirect, usePathname, useRouter, getPathname }, Locale, routing, metadata, vazirmatn, LocaleNotifier (+1 more)
-
-### Community 72 - "link"
-Cohesion: 0.10
-Nodes (20): 1. Environment setup, 2. Choose MQTT mode, 3. Health check, 4. Login and platform admin, 5. Register a device, 6. MQTT test, 7. Stop, Listen for commands (+12 more)
-
-### Community 73 - "date"
-Cohesion: 0.29
-Nodes (6): package:intl/intl.dart, date, diff, formatDateTime, formatRelativeTime, now
-
-### Community 74 - "null"
-Cohesion: 0.29
-Nodes (6): return, _e164Pattern, formatPhoneError, isValidE164, null, trimmed
-
-### Community 75 - "Sharing"
-Cohesion: 0.18
-Nodes (11): Share via Phone Number, Sharing REST API, share_permissions table, 4. Features (v1), Device control, Device provisioning, Event history, Permission Levels (view/control/admin) (+3 more)
-
-### Community 76 - "metadata"
+### Community 42 - "device_control_provider.dart"
 Cohesion: 0.09
-Nodes (24): ../../../data/models/household_models.dart, ../../data/repositories/household_repository.dart, initState, build, create, delete, _fetch, householdListProvider (+16 more)
+Nodes (29): ConsumerWidget, device_detail_provider.dart, device_list_provider.dart, _applyOptimisticUpdate, build, clearError, DeviceControlNotifier, deviceControlProvider (+21 more)
 
-### Community 77 - "build_end"
-Cohesion: 0.33
-Nodes (5): build_end, build_start, code_assets, data_assets, dependencies
+### Community 43 - "auth_models.dart"
+Cohesion: 0.14
+Nodes (13): accessToken, code, expiresIn, expiresInSeconds, fromJson, phone, refreshToken, retryAfterSeconds (+5 more)
 
-### Community 78 - "DeviceCard"
-Cohesion: 0.15
-Nodes (13): FastAPI Backend, Flutter Mobile App, Next.js 16 Web Frontend, 1. System Context, 2. Cloud/Local Hybrid Behavior, 3. Device Provisioning Flow, 4. MQTT Topic Structure, 5. Tech decisions (+5 more)
+### Community 44 - "share_models.dart"
+Cohesion: 0.14
+Nodes (13): createdAt, fromJson, granteePhone, id, permission, scope, scopeId, Share (+5 more)
 
-### Community 79 - "build_end"
-Cohesion: 0.33
-Nodes (5): build_end, build_start, code_assets, data_assets, dependencies
-
-### Community 80 - "SBFrame"
-Cohesion: 0.33
-Nodes (5): handle_new_rx_page(), __lldb_init_module(), Intercept NOTIFY_DEBUGGER_ABOUT_RX_PAGES and touch the pages., SBDebugger, SBFrame
-
-### Community 81 - "build"
-Cohesion: 0.09
-Nodes (22): ../../core/theme/app_theme.dart, ../../core/utils/date_formatter.dart, ../../data/models/device_models.dart, HelpScreen, _HelpSection, _sections, steps, title (+14 more)
-
-### Community 82 - "build"
-Cohesion: 0.06
-Nodes (37): Device Provisioning Flow, Event Sourcing, MQTT Topic Structure, Phone-number OTP Authentication, Devices REST API, GET /devices/{id}/events, handle_state_message, Households REST API (+29 more)
-
-### Community 83 - "Cloud MQTT Broker"
-Cohesion: 0.40
-Nodes (5): Cloud/Local Dual MQTT, MQTT Broker (EMQX/Mosquitto), Cloud/Local Hybrid Behavior, Cloud MQTT Broker, Local MQTT Broker (LAN)
-
-### Community 85 - "Flutter UI Framework"
-Cohesion: 0.40
-Nodes (5): Android App Launcher Icon, Flutter UI Framework, Mipmap Density Variants (mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi), Flutter Logo (default boilerplate launcher graphic), Android Launcher Icon Asset Set (ic_launcher.png, mipmap density variants)
-
-### Community 86 - "Solid Black Splash Screen 1x"
-Cohesion: 0.60
-Nodes (5): Black Placeholder Launch Splash, iOS Launch Image Platform Assets, Solid Black Splash Screen (1x), Solid Black Splash Screen (2x), Solid Black Splash Screen (3x)
-
-### Community 87 - "registrar"
-Cohesion: 0.40
-Nodes (4): registerPlugins, registrar, package:flutter_web_plugins/flutter_web_plugins.dart, package:shared_preferences_web/shared_preferences_web.dart
-
-### Community 90 - "build"
-Cohesion: 0.06
-Nodes (33): Access control details, API reference (registration-related), Authentication, Commercial ownership model, Customer journey, Database flow, Device Registration Flow, Devices (+25 more)
-
-### Community 92 - "Runner Assets.xcassets"
-Cohesion: 0.40
-Nodes (4): Runner Assets.xcassets, Launch Screen Customization, Launch Screen Assets, Runner Xcode Workspace
-
-### Community 96 - "Dart Static Analyzer"
-Cohesion: 0.67
-Nodes (3): Dart Analyzer Configuration, Dart Static Analyzer, flutter_lints Recommended Lint Set
-
-### Community 101 - "Home"
+### Community 45 - "راهنمای پیکربندی MQTT (Mosquitto)"
 Cohesion: 0.15
 Nodes (13): ACL, تست از راه دور, تست سریع با Docker (توسعه), خطای رایج: `Duplicate persistence_location`, خطای رایج: `include_dir` کامنت شده, خطای رایج: TLS بدون گواهی, راهنمای پیکربندی MQTT (Mosquitto), فایروال (+5 more)
 
-### Community 105 - "nextConfig"
+### Community 46 - "SmartPlug — IoT Smart Plug Platform"
+Cohesion: 0.05
+Nodes (44): 1. Clone & enter, 2. Backend setup, 3. Frontend setup, 4. Mobile setup (optional), API Reference, Architecture Overview, Backend, Backend (`backend/.env`) (+36 more)
+
+### Community 47 - "event_history_screen.dart"
 Cohesion: 0.18
-Nodes (9): UnregisterTexture(), FlutterEngine(), ProcessMessages(), RelinquishEngine(), SetNextFrameCallback(), ShutDown(), FlutterDesktopEngineRef, function (+1 more)
+Nodes (12): eventListProvider, build, createState, deviceId, dispose, EventHistoryScreen, _EventHistoryScreenState, _eventTile (+4 more)
 
-### Community 136 - "Community 136"
-Cohesion: 0.06
-Nodes (32): Access control (ACL), Additional measures, Backend service account, Backend wildcard subscriptions, Backend wiring, Cloud → Device (backend publishes, ESP subscribes), Connect parameters, Device → Cloud (ESP publishes, backend subscribes) (+24 more)
+### Community 48 - "Spinner.tsx"
+Cohesion: 0.21
+Nodes (4): Spinner(), AdminHouseholdResponse, AdminStatsResponse, AdminUserResponse
 
-### Community 137 - "Community 137"
-Cohesion: 0.12
-Nodes (16): MQTT محلی در مقابل VPS, اجرا, اجرا, تست, تست, تنظیم `.env`, تنظیم `.env`, حالت Local (Mosquitto در Docker) (+8 more)
-
-### Community 138 - "Community 138"
-Cohesion: 0.50
-Nodes (3): Deploy on Vercel, Getting Started, Learn More
-
-### Community 139 - "Community 139"
-Cohesion: 0.06
-Nodes (32): Cloud / local hybrid control paths, Core services (backend), Data model (multi-device), Device command flow (full trace), Discovery and listing, Failure modes and HTTP codes, Future horizontal scaling, Monitoring hooks (+24 more)
-
-### Community 141 - "Community 141"
-Cohesion: 0.07
-Nodes (28): Cloud / local hybrid during provisioning, `cmnd/{serial}/power`, Device Provisioning Flow (First Boot), Diagnostic commands, Factory reset / re-provisioning, Firmware ↔ backend payload contract, High-level flow, Multi-device provisioning in one home (+20 more)
-
-### Community 142 - "Community 142"
+### Community 49 - "[locale]/layout.tsx"
 Cohesion: 0.22
-Nodes (8): bool get, detail, isNotFound, isRateLimited, isUnauthorized, isValidationError, statusCode, toString
+Nodes (6): metadata, vazirmatn, Providers(), Locale, routing, config
 
-### Community 143 - "Community 143"
-Cohesion: 0.18
-Nodes (11): 1. Configure environment, 2. Start the stack, 3. Verify services, 4. Test MQTT, 5. Register a device, 6. Stop, Persian guide, Prerequisites (+3 more)
+### Community 50 - "file.svg Static Asset"
+Cohesion: 0.29
+Nodes (13): file.svg Static Asset, Document Icon with Folded Corner and Text Lines, globe.svg Static Asset, Globe World Icon with Meridians and Parallels, next.svg Static Asset, Next.js Wordmark Logo, vercel.svg Static Asset, Vercel Triangle Logo Mark (+5 more)
 
-### Community 144 - "Community 144"
+### Community 51 - "package:flutter_riverpod/flutter_riverpod.dart"
 Cohesion: 0.20
-Nodes (9): ../../core/network/device_ap_client.dart, ../models/provisioning_models.dart, _api, configureDeviceAp, createPairingToken, getUnlinked, link, ProvisioningRepository (+1 more)
+Nodes (8): app.dart, load, main, main, package:flutter_dotenv/flutter_dotenv.dart, package:flutter_riverpod/flutter_riverpod.dart, package:flutter_test/flutter_test.dart, package:smartplug/app.dart
 
-### Community 145 - "Community 145"
+### Community 52 - "app_theme.dart"
+Cohesion: 0.15
+Nodes (12): AppTheme, error, light, off, offline, on, online, primary (+4 more)
+
+### Community 53 - "api_client.dart"
+Cohesion: 0.11
+Nodes (18): ../constants/api_constants.dart, ../../core/constants/api_constants.dart, ../../core/storage/secure_storage.dart, dart:convert, ../../data/models/api_error.dart, _client, _headers, instance (+10 more)
+
+### Community 54 - "secure_storage.dart"
+Cohesion: 0.12
+Nodes (15): _accessTokenKey, async, clear, _phoneKey, _refreshTokenKey, saveTokens, SecureStorage, updateTokens (+7 more)
+
+### Community 55 - "shares.py"
+Cohesion: 0.17
+Nodes (23): create_share(), incoming_shares(), list_shares(), AsyncSession, delete, get, patch, post (+15 more)
+
+### Community 56 - "DeviceResponse"
+Cohesion: 0.24
+Nodes (10): DashboardDeviceCard(), DashboardDeviceCardProps, relativeTime(), DeviceCard(), DeviceCardProps, PowerBadge(), PowerBadgeProps, StateBadge() (+2 more)
+
+### Community 57 - "help_screen.dart"
+Cohesion: 0.15
+Nodes (12): build, _HelpSection, _sections, steps, title, build, build, package:go_router/go_router.dart (+4 more)
+
+### Community 58 - "AGENTS.md — MQTT-Mobile-WEB"
+Cohesion: 0.13
+Nodes (15): AGENTS.md — MQTT-Mobile-WEB, Backend commands (from `backend/`), Backend gotchas, Frontend commands (from `frontend/`), Frontend gotchas, Full stack Docker (repo root — recommended for MQTT testing), Key constraints, Mobile commands (from `mobile/`) (+7 more)
+
+### Community 59 - "wWinMain"
+Cohesion: 0.24
+Nodes (9): _In_, _In_opt_, wWinMain(), string, wchar_t, CreateAndAttachConsole(), GetCommandLineArguments(), Utf8FromUtf16() (+1 more)
+
+### Community 60 - "device_states table"
+Cohesion: 0.20
+Nodes (11): MQTT Topic Structure, handle_state_message, cmnd/{serial}/power, tele/{serial}/state, PATCH /devices/{id}/control, WebSocket /ws/devices/{id}/state, WebSocket Real-time Updates, device_states table (+3 more)
+
+### Community 61 - "share_repository.dart"
+Cohesion: 0.18
+Nodes (10): accept, _api, create, decline, listDeviceShares, listIncoming, listMyShares, revoke (+2 more)
+
+### Community 62 - "household_models.dart"
+Cohesion: 0.18
+Nodes (10): createdAt, deviceCount, fromJson, Household, HouseholdCreateRequest, id, name, role (+2 more)
+
+### Community 63 - "app_constants.dart"
+Cohesion: 0.20
+Nodes (9): AppConstants, defaultPageSize, httpTimeout, otpExpireSeconds, otpLength, otpRetryAfterSeconds, wsReconnectDelay, static const Duration (+1 more)
+
+### Community 64 - "manifest.json"
+Cohesion: 0.18
+Nodes (10): background_color, description, display, icons, name, orientation, prefer_related_applications, short_name (+2 more)
+
+### Community 65 - "Tables"
+Cohesion: 0.12
+Nodes (16): `automation_rules` (future), Database Schema, `device_events`, `device_network_config`, `device_states`, `devices`, Entity Relationships, `household_members` (+8 more)
+
+### Community 66 - "package:flutter/material.dart"
+Cohesion: 0.08
+Nodes (25): Color, IconData, _InfoTab, _ReadingsTab, HelpScreen, icon, onTap, _OptionCard (+17 more)
+
+### Community 67 - "راه‌اندازی سریع با Docker"
 Cohesion: 0.20
 Nodes (10): راه‌اندازی سریع با Docker, عیب‌یابی, مستندات مرتبط, پیش‌نیازها, ۱. تنظیم محیط, ۲. اجرای سرویس‌ها, ۳. بررسی سلامت سرویس‌ها, ۴. تست MQTT (+2 more)
 
-### Community 146 - "Community 146"
+### Community 68 - "main.py"
+Cohesion: 0.08
+Nodes (23): AppException, Exception, FastAPI, register_exception_handlers(), configure_logging(), lifespan(), FastAPI, health_check() (+15 more)
+
+### Community 69 - "share_provider.dart"
+Cohesion: 0.06
+Nodes (35): AsyncNotifier, ../../data/models/share_models.dart, ../../data/repositories/share_repository.dart, List, Map, DeviceEvent, deviceId, events (+27 more)
+
+### Community 70 - "event_repository.dart"
+Cohesion: 0.29
+Nodes (6): ../../core/constants/app_constants.dart, ../../core/network/api_client.dart, _api, EventRepository, getDeviceEvents, ../models/event_models.dart
+
+### Community 71 - "device_repository.dart"
+Cohesion: 0.20
+Nodes (9): _api, control, createLocalTest, delete, DeviceRepository, list, simulate, updateName (+1 more)
+
+### Community 72 - "households table"
 Cohesion: 0.25
-Nodes (7): ../constants/api_constants.dart, dart:convert, configure, DeviceApClient, message, toString, package:http/http.dart
+Nodes (8): Households REST API, household_members table, households table, users table, Customer, Household, Sharee, User
 
-### Community 147 - "Community 147"
-Cohesion: 0.13
-Nodes (14): ../../core/network/api_client.dart, ../models/auth_models.dart, ../models/household_models.dart, ApiClient, _api, AuthRepository, refresh, sendOtp (+6 more)
+### Community 73 - "date_formatter.dart"
+Cohesion: 0.29
+Nodes (6): date, diff, formatDateTime, formatRelativeTime, now, package:intl/intl.dart
 
-### Community 148 - "Community 148"
+### Community 74 - "phone_validator.dart"
+Cohesion: 0.29
+Nodes (6): _e164Pattern, formatPhoneError, isValidE164, null, trimmed, return
+
+### Community 75 - "4. Features (v1)"
+Cohesion: 0.18
+Nodes (11): Share via Phone Number, Sharing REST API, share_permissions table, 4. Features (v1), Device control, Device provisioning, Event history, Permission Levels (view/control/admin) (+3 more)
+
+### Community 76 - "link_device_screen.dart"
+Cohesion: 0.09
+Nodes (24): ../../../data/models/household_models.dart, ../../data/repositories/household_repository.dart, build, create, delete, _fetch, householdListProvider, refresh (+16 more)
+
+### Community 77 - "config.py"
+Cohesion: 0.32
+Nodes (5): do_run_migrations(), run_async_migrations(), run_migrations_online(), Settings, BaseSettings
+
+### Community 78 - "AGENTS.md"
+Cohesion: 0.18
+Nodes (11): Event Sourcing, FastAPI Backend, Flutter Mobile App, Next.js 16 Web Frontend, 1. System Context, 2. Cloud/Local Hybrid Behavior, 3. Device Provisioning Flow, 4. MQTT Topic Structure (+3 more)
+
+### Community 79 - "راهنمای استقرار (خلاصه فارسی)"
 Cohesion: 0.25
 Nodes (8): استقرار تولید (خلاصه), توسعه محلی — Docker (توصیه شده), راهنمای استقرار (خلاصه فارسی), متغیرهای مهم `.env`, مستندات کامل انگلیسی, معماری, پنل مدیریت, چک‌لیست امنیت
 
-### Community 149 - "Community 149"
-Cohesion: 0.23
-Nodes (12): gmqtt, flutter_dotenv, web_socket_channel, Cloud/Local Hybrid MQTT, Device Provisioning, Event Sourcing (Immutable State Change Events), Mosquitto MQTT Broker (VPS Production), MQTT Device Protocol (+4 more)
-
-### Community 150 - "Community 150"
+### Community 80 - "استقرار روی VPS"
 Cohesion: 0.25
-Nodes (7): 1. Overview, 2. Target users, 3. Entities, 5. Non-goals (explicitly excluded in v1), 6. Future (explicitly deferred), Smart Plug Platform, Product Specification — Smart Plug Platform
+Nodes (8): استقرار روی VPS, عیب‌یابی, چه چیزی روی سرور بالا می‌آید؟, ۱. روی VPS, ۲. ورود و تست بدون سخت‌افزار, ۳. دستگاه واقعی (ESP) به MQTT سرور, ۴. اگر Mosquitto از قبل روی VPS نصب است, ۵. فایروال و Mosquitto میزبان
 
-### Community 151 - "Community 151"
+### Community 81 - "../../core/theme/app_theme.dart"
+Cohesion: 0.12
+Nodes (16): ../../core/theme/app_theme.dart, ../../core/utils/date_formatter.dart, ../../data/models/device_models.dart, incomingShareListProvider, build, IncomingSharesScreen, _incomingTile, build (+8 more)
+
+### Community 82 - "Device Provisioning Sequence"
+Cohesion: 0.14
+Nodes (17): Device Provisioning Flow, Phone-number OTP Authentication, Devices REST API, GET /devices/{id}/events, tele/{serial}/event, PATCH /devices/{id}/link, POST /auth/send-otp, POST /auth/verify-otp (+9 more)
+
+### Community 83 - "Cloud/Local Hybrid Behavior"
+Cohesion: 0.40
+Nodes (5): Cloud/Local Dual MQTT, MQTT Broker (EMQX/Mosquitto), Cloud/Local Hybrid Behavior, Cloud MQTT Broker, Local MQTT Broker (LAN)
+
+### Community 84 - "dashboard/page.tsx"
+Cohesion: 0.36
+Nodes (6): EnrichedEvent, EVENT_COLORS, HouseholdSelector(), HouseholdSelectorProps, DeviceEventResponse, HouseholdResponse
+
+### Community 85 - "Android Launcher Icon Asset Set (ic_launcher.png, mipmap density variants)"
+Cohesion: 0.40
+Nodes (5): Android App Launcher Icon, Flutter UI Framework, Mipmap Density Variants (mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi), Flutter Logo (default boilerplate launcher graphic), Android Launcher Icon Asset Set (ic_launcher.png, mipmap density variants)
+
+### Community 86 - "Black Placeholder Launch Splash"
+Cohesion: 0.60
+Nodes (5): Black Placeholder Launch Splash, Solid Black Splash Screen (1x), Solid Black Splash Screen (2x), Solid Black Splash Screen (3x), iOS Launch Image Platform Assets
+
+### Community 87 - "راهنمای پنل مدیریت پلتفرم"
 Cohesion: 0.29
 Nodes (7): API (برای اتوماسیون), ایجاد توکن جفت‌سازی, بخش‌ها, ثبت سریال کارخانه, دسترسی, راهنمای پنل مدیریت پلتفرم, نکات
 
-### Community 153 - "Community 153"
-Cohesion: 0.40
-Nodes (6): AppLocalizations, _AppLocalizationsDelegate, AppLocalizationsEn, AppLocalizationsFa, of, LocalizationsDelegate
+### Community 88 - "[id]/shares/page.tsx"
+Cohesion: 0.57
+Nodes (5): DeviceSharesPage(), LoginPageContent(), formatPhoneError(), isValidE164(), SharedUserResponse
 
-### Community 156 - "Community 156"
-Cohesion: 0.40
-Nodes (4): AppException, Exception, ApiError, DeviceApException
+### Community 90 - "Device Registration Flow"
+Cohesion: 0.06
+Nodes (33): Access control details, API reference (registration-related), Authentication, Commercial ownership model, Customer journey, Database flow, Device Registration Flow, Devices (+25 more)
 
-### Community 159 - "Community 159"
+### Community 91 - "household_repository.dart"
+Cohesion: 0.29
+Nodes (6): _api, create, delete, HouseholdRepository, list, ../models/household_models.dart
+
+### Community 92 - "Launch Screen Customization"
+Cohesion: 0.40
+Nodes (4): Runner Assets.xcassets, Launch Screen Customization, Launch Screen Assets, Runner Xcode Workspace
+
+### Community 93 - "list_device_events"
+Cohesion: 0.40
+Nodes (4): list_device_events(), get, Device event history router. Extend here: query events with pagination and…, List events for a device. TODO: implement.
+
+### Community 94 - "vps-up.sh"
+Cohesion: 0.40
+Nodes (4): CORS_ORIGINS, NEXT_PUBLIC_API_URL, NEXT_PUBLIC_DEFAULT_LOCALE, vps-up.sh script
+
+### Community 96 - "Dart Analyzer Configuration"
+Cohesion: 0.67
+Nodes (3): Dart Analyzer Configuration, Dart Static Analyzer, flutter_lints Recommended Lint Set
+
+### Community 97 - "event.py"
+Cohesion: 0.67
+Nodes (3): DeviceEventListResponse, DeviceEventResponse, BaseModel
+
+### Community 136 - "MQTT Server Setup (Mosquitto)"
+Cohesion: 0.06
+Nodes (32): Access control (ACL), Additional measures, Backend service account, Backend wildcard subscriptions, Backend wiring, Cloud → Device (backend publishes, ESP subscribes), Connect parameters, Device → Cloud (ESP publishes, backend subscribes) (+24 more)
+
+### Community 138 - "frontend/README.md"
+Cohesion: 0.50
+Nodes (3): Deploy on Vercel, Getting Started, Learn More
+
+### Community 139 - "Server Architecture"
+Cohesion: 0.06
+Nodes (32): Cloud / local hybrid control paths, Core services (backend), Data model (multi-device), Device command flow (full trace), Discovery and listing, Failure modes and HTTP codes, Future horizontal scaling, Monitoring hooks (+24 more)
+
+### Community 141 - "Device Provisioning Flow (First Boot)"
+Cohesion: 0.07
+Nodes (28): Cloud / local hybrid during provisioning, `cmnd/{serial}/power`, Device Provisioning Flow (First Boot), Diagnostic commands, Factory reset / re-provisioning, Firmware ↔ backend payload contract, High-level flow, Multi-device provisioning in one home (+20 more)
+
+### Community 142 - "api_error.dart"
+Cohesion: 0.20
+Nodes (9): bool get, ApiError, detail, isNotFound, isRateLimited, isUnauthorized, isValidationError, statusCode (+1 more)
+
+### Community 143 - "Quick Start with Docker"
+Cohesion: 0.18
+Nodes (11): 1. Configure environment, 2. Start the stack, 3. Verify services, 4. Test MQTT, 5. Register a device, 6. Stop, Persian guide, Prerequisites (+3 more)
+
+### Community 144 - "provisioning_repository.dart"
+Cohesion: 0.20
+Nodes (9): ../../core/network/device_ap_client.dart, _api, configureDeviceAp, createPairingToken, getUnlinked, link, ProvisioningRepository, register (+1 more)
+
+### Community 147 - "auth_repository.dart"
 Cohesion: 0.25
-Nodes (8): Backend, Frontend, Mobile, MQTT Broker (VPS Mosquitto), Option A: Docker Compose (full stack), Option B: Manual deployment with systemd + nginx, Production Checklist, Production Deployment
+Nodes (7): ApiClient, _api, AuthRepository, refresh, sendOtp, verifyOtp, ../models/auth_models.dart
 
-### Community 160 - "Community 160"
+### Community 150 - "Product Specification — Smart Plug Platform"
+Cohesion: 0.25
+Nodes (7): 1. Overview, 2. Target users, 3. Entities, 5. Non-goals (explicitly excluded in v1), 6. Future (explicitly deferred), Smart Plug Platform, Product Specification — Smart Plug Platform
+
+### Community 153 - "AppLocalizations"
+Cohesion: 0.40
+Nodes (6): LocalizationsDelegate, AppLocalizations, _AppLocalizationsDelegate, AppLocalizationsEn, AppLocalizationsFa, of
+
+### Community 160 - "SmartPlug Documentation"
 Cohesion: 0.33
 Nodes (6): Docker Compose profiles (summary), English guides (`docs/en/`), Persian guides (`docs/fa/`), Root-level references (English), SmartPlug Documentation, Start here
-
-### Community 161 - "Community 161"
-Cohesion: 0.33
-Nodes (6): Common Issues, Database Connection Errors, Frontend Build Errors, Mobile Build Errors, MQTT Connection Issues, Troubleshooting
-
-### Community 162 - "Community 162"
-Cohesion: 0.33
-Nodes (6): Dashboard, Development Mode, Device Control, First Time Setup, Sharing, Using the App
-
-### Community 163 - "Community 163"
-Cohesion: 0.40
-Nodes (5): flutter_riverpod, go_router, smartplug Mobile App, Flutter Starter Project, Flutter Mobile App (Riverpod + go_router)
-
-### Community 164 - "Community 164"
-Cohesion: 0.40
-Nodes (5): 1. Clone & enter, 2. Backend setup, 3. Frontend setup, 4. Mobile setup (optional), Quick Start (manual / non-Docker)
-
-### Community 165 - "Community 165"
-Cohesion: 0.50
-Nodes (4): Geist Font (next/font), Next.js Project (create-next-app), Vercel Deployment, Next.js 16 Frontend (App Router, TypeScript, Tailwind CSS v4)
-
-### Community 166 - "Community 166"
-Cohesion: 0.67
-Nodes (3): python-jose[cryptography], Dev OTP Endpoint (GET /v1/dev/otp/{phone}), Phone-Number OTP Authentication
 
 ## Ambiguous Edges - Review These
 - `Device Provisioning Sequence` → `devices table`  [AMBIGUOUS]
@@ -678,9 +630,9 @@ Nodes (3): python-jose[cryptography], Dev OTP Endpoint (GET /v1/dev/otp/{phone})
   frontend/public/globe.svg · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **1348 isolated node(s):** `docker-entrypoint.sh script`, `docker-up.sh script`, `mqtt-test.sh script`, `eslintConfig`, `withNextIntl` (+1343 more)
+- **1370 isolated node(s):** `docker-entrypoint.sh script`, `docker-up.sh script`, `mqtt-test.sh script`, `vps-up.sh script`, `NEXT_PUBLIC_API_URL` (+1365 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **29 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -689,13 +641,13 @@ _Questions this graph is uniquely positioned to answer:_
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
 - **What is the exact relationship between `Globe World Icon with Meridians and Parallels` and `Browser Window Icon with Title-Bar Control Dots`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
-- **Why does `LocaleNotifier` connect `refresh` to `build`, `async`?**
-  _High betweenness centrality (0.084) - this node is a cross-community bridge._
-- **Why does `AppLocalizations` connect `Community 153` to `AGENTS.md`, `build`?**
-  _High betweenness centrality (0.046) - this node is a cross-community bridge._
-- **What connects `Device event history router. Extend here: query events with pagination and filte`, `List events for a device. TODO: implement.`, `WebSocket endpoint for real-time device state push.  Clients connect with a JWT` to the rest of the system?**
-  _1363 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Run` be split into smaller, more focused modules?**
-  _Cohesion score 0.07673469387755102 - nodes in this community are weakly interconnected._
-- **Should `AGENTS.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.013333333333333334 - nodes in this community are weakly interconnected._
+- **Why does `AppLocalizations` connect `AppLocalizations` to `app_localizations.dart`, `device_detail_screen.dart`?**
+  _High betweenness centrality (0.068) - this node is a cross-community bridge._
+- **Why does `LocaleNotifier` connect `device_control_provider.dart` to `[locale]/layout.tsx`, `secure_storage.dart`?**
+  _High betweenness centrality (0.063) - this node is a cross-community bridge._
+- **Why does `Locale` connect `[locale]/layout.tsx` to `auth.tsx`, `device_control_provider.dart`?**
+  _High betweenness centrality (0.063) - this node is a cross-community bridge._
+- **Are the 12 inferred relationships involving `Base` (e.g. with `AutomationRule` and `Device`) actually correct?**
+  _`Base` has 12 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 11 inferred relationships involving `TimestampMixin` (e.g. with `AutomationRule` and `Device`) actually correct?**
+  _`TimestampMixin` has 11 INFERRED edges - model-reasoned connections that need verification._

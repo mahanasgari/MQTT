@@ -15,6 +15,8 @@ import type {
   DeviceEventListResponse,
   SharedUserListResponse,
   DeviceControlRequest,
+  DeviceSimulateRequest,
+  LocalTestDeviceRequest,
   StatusResponse,
   ShareCreate,
   ShareListResponse,
@@ -165,6 +167,12 @@ export const api = {
   },
   controlDevice(id: string, data: DeviceControlRequest) {
     return api.patch<StatusResponse>(`/devices/${id}/control`, data);
+  },
+  simulateDevice(id: string, data: DeviceSimulateRequest) {
+    return api.post<DeviceResponse>(`/devices/${id}/simulate`, data);
+  },
+  createLocalTestDevice(data?: LocalTestDeviceRequest) {
+    return api.post<DeviceResponse>("/devices/local-test", data ?? {});
   },
   getDeviceEvents(
     id: string,

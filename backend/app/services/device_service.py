@@ -173,3 +173,53 @@ async def handle_availability_message(db: AsyncSession, serial: str, data: dict)
     )
 
     return device.id
+
+
+async def apply_local_telemetry(
+    db: AsyncSession,
+    device: Device,
+    *,
+    power: str | None = None,
+    connectivity: str | None = None,
+    initiator: str = "user",
+    initiator_id: uuid.UUID | None = None,
+) -> dict:
+    """Apply power/connectivity as if the device published MQTT telemetry."""
+    data: dict = {}
+    if power in ("on", "off"):
+        data["power"] = power
+    if connectivity in ("online", "offline"):
+        data["connectivity"] = connectivity
+    if not data:
+        return data
+
+    existing = await db.get(DeviceState, device.id)
+    if existing is None:
+        existing = DeviceState(device_id=device.id)
+        db.add(existing)
+        await db.flush()
+
+    prev_power = existing.power
+    prev_conn = existing.connectivity
+    await update_device_state(db, device.id, data)
+
+    if power in ("on", "off") and prev_power != power:
+        await create_device_event(
+            db,
+            device.id,
+            f"power_{power}",
+            initiator=initiator,
+            initiator_id=initiator_id,
+            payload={"previous": prev_power, "source": "local_simulate"},
+        )
+    if connectivity in ("online", "offline") and prev_conn != connectivity:
+        await create_device_event(
+            db,
+            device.id,
+            f"device_{connectivity}",
+            initiator=initiator,
+            initiator_id=initiator_id,
+            payload={"source": "local_simulate"},
+        )
+    return data
+

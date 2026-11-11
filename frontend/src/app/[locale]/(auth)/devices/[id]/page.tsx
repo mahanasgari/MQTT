@@ -26,6 +26,7 @@ export default function DeviceDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [renaming, setRenaming] = useState(false);
+  const [simulating, setSimulating] = useState(false);
   const [newName, setNewName] = useState("");
 
   const { connected, states } = useDeviceWebSocket([deviceId]);
@@ -58,6 +59,34 @@ export default function DeviceDetailPage() {
   useEffect(() => {
     if (deviceId) fetchDevice();
   }, [deviceId, fetchDevice]);
+
+  const handleSimulate = async (connectivity: "online" | "offline") => {
+    setSimulating(true);
+    setError("");
+    try {
+      const updated = await api.simulateDevice(deviceId, {
+        connectivity,
+        power: power === "on" ? "on" : "off",
+      });
+      setDevice(updated);
+      if (updated.state) {
+        setFullState((prev) =>
+          prev
+            ? {
+                ...prev,
+                power: updated.state!.power,
+                connectivity: updated.state!.connectivity,
+                last_seen_at: updated.state!.last_seen_at,
+              }
+            : prev,
+        );
+      }
+    } catch (e) {
+      setError(e instanceof ApiError ? e.detail : t("simulateFailed"));
+    } finally {
+      setSimulating(false);
+    }
+  };
 
   const handleRename = async () => {
     if (!newName.trim()) return;
@@ -158,6 +187,27 @@ export default function DeviceDetailPage() {
         </Card>
 
         <div className="flex flex-col gap-4">
+          <Card>
+            <h3 className="text-sm font-medium text-gray-900 mb-2">{t("simulateOnline")}</h3>
+            <p className="text-xs text-gray-500 mb-3">{t("localTestHint")}</p>
+            <div className="flex gap-2">
+              <Button
+                size="sm"
+                loading={simulating}
+                onClick={() => handleSimulate("online")}
+              >
+                {t("simulateOnline")}
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                loading={simulating}
+                onClick={() => handleSimulate("offline")}
+              >
+                {t("simulateOffline")}
+              </Button>
+            </div>
+          </Card>
           <Card>
             <h3 className="text-sm font-medium text-gray-900 mb-3">{t("settings")}</h3>
             <div className="flex flex-col gap-3">
