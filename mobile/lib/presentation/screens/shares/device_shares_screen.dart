@@ -60,27 +60,39 @@ class _DeviceSharesScreenState extends ConsumerState<DeviceSharesScreen> {
               data: (shares) {
                 if (shares.isEmpty) {
                   return Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.share, size: 48, color: Colors.grey[300]),
-                        const SizedBox(height: 12),
-                        Text(
-                          l10n.noSharesYet,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(color: Colors.grey[500]),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          l10n.tapToShare,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(color: Colors.grey[400]),
-                        ),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.share,
+                              size: 48, color: Colors.grey[300]),
+                          const SizedBox(height: 12),
+                          Text(
+                            l10n.noSharesYet,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(color: Colors.grey[500]),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            l10n.emptySharesHint,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(color: Colors.grey[400]),
+                          ),
+                          const SizedBox(height: 24),
+                          ElevatedButton.icon(
+                            onPressed: () =>
+                                setState(() => _showForm = true),
+                            icon: const Icon(Icons.person_add, size: 18),
+                            label: Text(l10n.shareNow),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 }
@@ -166,7 +178,8 @@ class _DeviceSharesScreenState extends ConsumerState<DeviceSharesScreen> {
 
   Future<void> _handleCreate() async {
     final phone = _phoneController.text.trim();
-    final error = formatPhoneError(phone);
+    final l10n = AppLocalizations.of(context)!;
+    final error = formatPhoneError(phone, l10n);
     if (error != null) {
       setState(() => _phoneError = error);
       return;
@@ -211,10 +224,10 @@ class _DeviceSharesScreenState extends ConsumerState<DeviceSharesScreen> {
         ),
         title: Text(share.granteePhone),
         subtitle: Text(
-          '${share.permission.toUpperCase()} · ${share.status.toUpperCase()}',
+          '${_permLabel(share.permission, l10n)} · ${_statusLabel(share.status, l10n)}',
           style: TextStyle(color: statusColor, fontSize: 12),
         ),
-        trailing: share.status == 'pending'
+        trailing: (share.status == 'pending' || share.status == 'accepted')
             ? TextButton(
                 onPressed: () => _confirmRevoke(share.id, l10n),
                 child: Text(l10n.revoke),
@@ -249,5 +262,30 @@ class _DeviceSharesScreenState extends ConsumerState<DeviceSharesScreen> {
         ],
       ),
     );
+  }
+
+  String _permLabel(String permission, AppLocalizations l10n) {
+    switch (permission) {
+      case 'view':
+        return l10n.permView;
+      case 'admin':
+        return l10n.permAdmin;
+      case 'control':
+      default:
+        return l10n.permControl;
+    }
+  }
+
+  String _statusLabel(String status, AppLocalizations l10n) {
+    switch (status) {
+      case 'accepted':
+        return l10n.shareStatusAccepted;
+      case 'revoked':
+      case 'declined':
+        return l10n.shareStatusRevoked;
+      case 'pending':
+      default:
+        return l10n.shareStatusPending;
+    }
   }
 }

@@ -14,20 +14,36 @@ import '../presentation/screens/provisioning/ap_setup_screen.dart';
 import '../presentation/screens/provisioning/claim_device_screen.dart';
 import '../presentation/screens/provisioning/link_device_screen.dart';
 import '../presentation/screens/help/help_screen.dart';
+import '../presentation/screens/onboarding/onboarding_screen.dart';
+import '../presentation/screens/households/households_screen.dart';
+import '../presentation/screens/shares/household_shares_screen.dart';
+import 'app_route_observer.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final appRouterProvider = Provider<GoRouter>((ref) {
-  final isLoggedIn = ref.watch(isAuthenticatedProvider);
+  // Recreating GoRouter on auth changes remounts /splash forever (same
+  // GlobalKey + initialLocation). Refresh the existing router instead.
+  final refresh = ValueNotifier<int>(0);
+  ref.listen<bool>(isAuthenticatedProvider, (_, __) {
+    refresh.value++;
+  });
+  ref.onDispose(refresh.dispose);
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
+    observers: [appRouteObserver],
     initialLocation: '/splash',
+    refreshListenable: refresh,
     redirect: (context, state) {
-      final isLoginRoute = state.matchedLocation == '/login';
+      final isLoggedIn = ref.read(isAuthenticatedProvider);
+      final loc = state.matchedLocation;
+      final isLoginRoute = loc == '/login';
+      final isSplash = loc == '/splash';
+      final isOnboarding = loc == '/onboarding';
 
       if (isLoggedIn && isLoginRoute) return '/';
-      if (!isLoggedIn && !isLoginRoute && state.matchedLocation != '/splash') {
+      if (!isLoggedIn && !isLoginRoute && !isSplash && !isOnboarding) {
         return '/login';
       }
       return null;
@@ -36,6 +52,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/splash',
         builder: (_, __) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: '/onboarding',
+        builder: (_, __) => const OnboardingScreen(),
       ),
       GoRoute(
         path: '/login',
@@ -68,16 +88,41 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         builder: (_, __) => const IncomingSharesScreen(),
       ),
       GoRoute(
+        path: '/households',
+        builder: (_, __) => const HouseholdsScreen(),
+      ),
+      GoRoute(
+        path: '/household/:id/shares',
+        builder: (_, state) => HouseholdSharesScreen(
+          householdId: state.pathParameters['id']!,
+        ),
+      ),
+      GoRoute(
         path: '/provision',
         builder: (_, __) => const ProvisioningScreen(),
       ),
       GoRoute(
         path: '/provision/ap-setup',
-        builder: (_, __) => const ApSetupScreen(),
+        builder: (_, state) => ApSetupScreen(
+          initialSerial: state.uri.queryParameters['serial'],
+          initialName: state.uri.queryParameters['name'],
+          wifiOnly: state.uri.queryParameters['wifiOnly'] == '1',
+        ),
       ),
       GoRoute(
         path: '/provision/claim',
-        builder: (_, __) => const ClaimDeviceScreen(),
+        builder: (_, state) => ClaimDeviceScreen(
+          initialSerial: state.uri.queryParameters['serial'],
+          initialToken: state.uri.queryParameters['token'],
+        ),
+      ),
+      // Deep link alias: smartplug://claim?serial=&token=
+      GoRoute(
+        path: '/claim',
+        redirect: (context, state) {
+          final q = state.uri.query;
+          return q.isEmpty ? '/provision/claim' : '/provision/claim?$q';
+        },
       ),
       GoRoute(
         path: '/provision/link/:deviceId',

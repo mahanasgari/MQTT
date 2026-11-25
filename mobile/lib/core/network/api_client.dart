@@ -49,11 +49,13 @@ class ApiClient {
       final refreshed = await _tryRefresh();
       if (refreshed) {
         final newHeaders = await _headers(skipAuth: false);
-        final streamed = await _client.send(
-          http.Request(method, url)
-            ..headers.addAll(newHeaders)
-            ..body = body != null ? jsonEncode(body) : '',
-        );
+        final streamed = await _client
+            .send(
+              http.Request(method, url)
+                ..headers.addAll(newHeaders)
+                ..body = body != null ? jsonEncode(body) : '',
+            )
+            .timeout(AppConstants.httpTimeout);
         res = await http.Response.fromStream(streamed);
       } else {
         await SecureStorage.clear();

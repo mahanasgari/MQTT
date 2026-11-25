@@ -99,3 +99,62 @@ final incomingShareListProvider =
     AsyncNotifierProvider<IncomingShareListNotifier, List<Share>>(
   IncomingShareListNotifier.new,
 );
+
+class HouseholdShareListNotifier extends AsyncNotifier<List<Share>> {
+  late final ShareRepository _repo;
+  String? _householdId;
+
+  @override
+  Future<List<Share>> build() async {
+    _repo = ShareRepository();
+    return [];
+  }
+
+  Future<void> fetch(String householdId) async {
+    _householdId = householdId;
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final all = await _repo.listMyShares();
+      return all
+          .where((s) =>
+              s.scope == 'household' && s.scopeId == householdId)
+          .toList();
+    });
+  }
+
+  Future<void> refresh() async {
+    if (_householdId == null) return;
+    await fetch(_householdId!);
+  }
+
+  Future<bool> create(String phone, String permission) async {
+    if (_householdId == null) return false;
+    try {
+      await _repo.create(ShareCreateRequest(
+        targetPhone: phone,
+        scope: 'household',
+        scopeId: _householdId!,
+        permission: permission,
+      ));
+      await refresh();
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<bool> revoke(String id) async {
+    try {
+      await _repo.revoke(id);
+      await refresh();
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+}
+
+final householdShareListProvider =
+    AsyncNotifierProvider<HouseholdShareListNotifier, List<Share>>(
+  HouseholdShareListNotifier.new,
+);

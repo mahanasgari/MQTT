@@ -32,15 +32,23 @@ class WsNotifier extends Notifier<WsConnectionState> {
     final token = await SecureStorage.accessToken;
     if (token == null) return;
 
+    // H2-07: keep prior subscriptions across reconnect.
+    final priorSubs = state.subscribedDeviceIds;
+
+    _subscription?.cancel();
+    _client?.dispose();
     _client = WebSocketClient();
     await _client!.connect(token);
 
     _subscription = _client!.messages.listen(_handleMessage);
 
-    state = WsConnectionState(isConnected: true);
+    state = WsConnectionState(
+      isConnected: true,
+      subscribedDeviceIds: priorSubs,
+    );
 
-    if (state.subscribedDeviceIds.isNotEmpty) {
-      _client!.subscribe(state.subscribedDeviceIds);
+    if (priorSubs.isNotEmpty) {
+      _client!.subscribe(priorSubs);
     }
   }
 
@@ -84,7 +92,9 @@ class WsNotifier extends Notifier<WsConnectionState> {
             msg.deviceId!,
             msg.data!,
           );
-      ref.read(deviceDetailProvider.notifier).applyLiveUpdate(msg.data!);
+      ref
+          .read(deviceDetailProvider.notifier)
+          .applyLiveUpdate(msg.deviceId!, msg.data!);
     }
   }
 

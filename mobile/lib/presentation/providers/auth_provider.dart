@@ -24,6 +24,16 @@ class AuthState {
 
   bool get isAuthenticated => status == AuthStatus.authenticated;
   bool get isLoading => status == AuthStatus.loading;
+
+  @override
+  bool operator ==(Object other) =>
+      other is AuthState &&
+      other.status == status &&
+      other.phone == phone &&
+      other.error == error;
+
+  @override
+  int get hashCode => Object.hash(status, phone, error);
 }
 
 class AuthNotifier extends Notifier<AuthState> {
@@ -37,25 +47,35 @@ class AuthNotifier extends Notifier<AuthState> {
   }
 
   Future<void> _checkAuth() async {
-    final token = await SecureStorage.accessToken;
-    final phone = await SecureStorage.phone;
-    if (token != null && phone != null) {
-      state = AuthState(
-        status: AuthStatus.authenticated,
-        phone: phone,
-      );
+    try {
+      final token = await SecureStorage.accessToken
+          .timeout(const Duration(seconds: 2));
+      final phone =
+          await SecureStorage.phone.timeout(const Duration(seconds: 2));
+      if (token != null && phone != null) {
+        state = AuthState(
+          status: AuthStatus.authenticated,
+          phone: phone,
+        );
+      }
+    } catch (_) {
+      // Storage hang/failure → stay logged out so splash can reach login.
     }
   }
 
   Future<void> checkAuth() => _checkAuth();
 
-  Future<SendOtpResult> sendOtp(String phone) async {
+  Future<SendOtpResult> sendOtp(
+    String phone, {
+    String channel = 'sms',
+  }) async {
     state = state.copyWith(error: null);
     try {
-      final res = await _repo.sendOtp(phone);
+      final res = await _repo.sendOtp(phone, channel: channel);
       return SendOtpResult(
         expiresInSeconds: res.expiresInSeconds,
         retryAfterSeconds: res.retryAfterSeconds,
+        channel: res.channel ?? channel,
       );
     } catch (e) {
       state = state.copyWith(error: e.toString());
@@ -95,10 +115,12 @@ class AuthNotifier extends Notifier<AuthState> {
 class SendOtpResult {
   final int? expiresInSeconds;
   final int? retryAfterSeconds;
+  final String? channel;
   final String? error;
   const SendOtpResult({
     this.expiresInSeconds,
     this.retryAfterSeconds,
+    this.channel,
     this.error,
   });
   bool get isSuccess => error == null;

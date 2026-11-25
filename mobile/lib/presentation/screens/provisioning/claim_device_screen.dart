@@ -1,21 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:smartplug/l10n/app_localizations.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../providers/provisioning_provider.dart';
+import '../../utils/provision_error.dart';
 
 class ClaimDeviceScreen extends ConsumerStatefulWidget {
-  const ClaimDeviceScreen({super.key});
+  final String? initialSerial;
+  final String? initialToken;
+
+  const ClaimDeviceScreen({
+    super.key,
+    this.initialSerial,
+    this.initialToken,
+  });
 
   @override
   ConsumerState<ClaimDeviceScreen> createState() => _ClaimDeviceScreenState();
 }
 
 class _ClaimDeviceScreenState extends ConsumerState<ClaimDeviceScreen> {
-  final _serialController = TextEditingController();
-  final _tokenController = TextEditingController();
+  late final TextEditingController _serialController;
+  late final TextEditingController _tokenController;
   final _nameController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _serialController = TextEditingController(
+      text: (widget.initialSerial ?? '').toUpperCase(),
+    );
+    _tokenController = TextEditingController(text: widget.initialToken ?? '');
+  }
 
   @override
   void dispose() {
@@ -23,6 +42,13 @@ class _ClaimDeviceScreenState extends ConsumerState<ClaimDeviceScreen> {
     _tokenController.dispose();
     _nameController.dispose();
     super.dispose();
+  }
+
+  String get _claimDeepLink {
+    final s = _serialController.text.trim().toUpperCase();
+    final t = _tokenController.text.trim();
+    if (s.isEmpty || t.isEmpty) return '';
+    return 'smartplug://claim?serial=${Uri.encodeComponent(s)}&token=${Uri.encodeComponent(t)}';
   }
 
   Future<void> _handleGetToken() async {
@@ -89,7 +115,11 @@ class _ClaimDeviceScreenState extends ConsumerState<ClaimDeviceScreen> {
     if (success) {
       final device = ref.read(provisioningProvider).registeredDevice;
       if (device != null) {
-        context.pushReplacement('/provision/link/${device.id}');
+        if (device.householdId != null && device.householdId!.isNotEmpty) {
+          context.go('/');
+        } else {
+          context.pushReplacement('/provision/link/${device.id}');
+        }
       }
     }
   }
@@ -129,6 +159,8 @@ class _ClaimDeviceScreenState extends ConsumerState<ClaimDeviceScreen> {
                 prefixIcon: const Icon(Icons.memory),
               ),
               textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.characters,
+              onChanged: (_) => setState(() {}),
             ),
             const SizedBox(height: 16),
             TextField(
@@ -143,7 +175,36 @@ class _ClaimDeviceScreenState extends ConsumerState<ClaimDeviceScreen> {
                 ),
               ),
               textInputAction: TextInputAction.next,
+              onChanged: (_) => setState(() {}),
             ),
+            if (_claimDeepLink.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              Center(
+                child: QrImageView(
+                  data: _claimDeepLink,
+                  version: QrVersions.auto,
+                  size: 160,
+                  backgroundColor: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Center(
+                child: TextButton.icon(
+                  onPressed: () async {
+                    await Clipboard.setData(ClipboardData(text: _claimDeepLink));
+                    if (!context.mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(l10n.claimLinkCopied),
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.copy, size: 16),
+                  label: Text(_claimDeepLink),
+                ),
+              ),
+            ],
             const SizedBox(height: 16),
             TextField(
               controller: _nameController,
@@ -166,7 +227,7 @@ class _ClaimDeviceScreenState extends ConsumerState<ClaimDeviceScreen> {
                   border: Border.all(color: Colors.red[200]!),
                 ),
                 child: Text(
-                  state.error!,
+                  localizeProvisionError(state.error, l10n),
                   style: TextStyle(fontSize: 13, color: Colors.red[800]),
                 ),
               ),

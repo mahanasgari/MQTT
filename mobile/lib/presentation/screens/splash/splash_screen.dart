@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../providers/auth_provider.dart';
+import '../../../core/storage/secure_storage.dart';
 import '../../../core/theme/app_theme.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -16,10 +17,28 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await ref.read(authProvider.notifier).checkAuth();
+      try {
+        await ref
+            .read(authProvider.notifier)
+            .checkAuth()
+            .timeout(const Duration(seconds: 2));
+      } catch (_) {}
       if (!mounted) return;
-      final auth = ref.read(authProvider);
-      context.go(auth.isAuthenticated ? '/' : '/login');
+      try {
+        final auth = ref.read(authProvider);
+        if (!auth.isAuthenticated) {
+          context.go('/login');
+          return;
+        }
+        final seenOnboarding = await SecureStorage.onboardingDone.timeout(
+          const Duration(seconds: 1),
+          onTimeout: () => true,
+        );
+        if (!mounted) return;
+        context.go(seenOnboarding ? '/' : '/onboarding');
+      } catch (_) {
+        if (mounted) context.go('/login');
+      }
     });
   }
 

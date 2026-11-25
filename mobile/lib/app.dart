@@ -16,7 +16,7 @@ class SmartPlugApp extends ConsumerWidget {
 
     return MaterialApp.router(
       title: 'SmartPlug',
-      theme: AppTheme.light,
+      theme: AppTheme.classic,
       locale: locale,
       supportedLocales: const [Locale('en'), Locale('fa')],
       localizationsDelegates: [

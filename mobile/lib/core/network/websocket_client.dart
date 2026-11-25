@@ -49,7 +49,7 @@ class WebSocketClient {
       final uri = Uri.parse('$wsBaseUrl/ws?token=$_token');
       _channel = WebSocketChannel.connect(uri);
 
-      await _channel!.ready;
+      await _channel!.ready.timeout(AppConstants.httpTimeout);
       _subscription = _channel!.stream.listen(
         (data) {
           try {

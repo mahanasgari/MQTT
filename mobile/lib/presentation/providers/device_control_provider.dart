@@ -1,6 +1,8 @@
-﻿import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/network/control_path_resolver.dart';
+import '../../core/storage/secure_storage.dart';
+import '../../data/models/control_path.dart';
 import '../../data/models/device_models.dart';
-import '../../data/repositories/device_repository.dart';
 import 'device_detail_provider.dart';
 import 'device_list_provider.dart';
 
@@ -8,54 +10,92 @@ class DeviceControlState {
   final bool isLoading;
   final String? error;
   final String? pendingDeviceId;
+  final ControlPath? lastPath;
 
   const DeviceControlState({
     this.isLoading = false,
     this.error,
     this.pendingDeviceId,
+    this.lastPath,
   });
 }
 
 class DeviceControlNotifier extends Notifier<DeviceControlState> {
-  late final DeviceRepository _repo;
-  DeviceState? _savedState;
+  late final ControlPathResolver _resolver;
+  /// Per-device rollback snapshots (H2-02).
+  final Map<String, DeviceState?> _savedByDevice = {};
 
   @override
   DeviceControlState build() {
-    _repo = DeviceRepository();
+    _resolver = ControlPathResolver();
     return const DeviceControlState();
   }
 
-  Future<bool> sendCommand(
-    String deviceId,
-    String command,
-    String value,
+  /// Toggle power via SoftAP → LAN → Cloud.
+  Future<ControlResult?> togglePower({
+    required String deviceId,
+    required String serial,
+    required String nextPower,
     DeviceState? currentState,
-  ) async {
-    final newPower = command == 'power' ? value : null;
+    String? lanIp,
+  }) async {
+    // Reject concurrent toggles — one in flight at a time (H2-02 / H2-09).
+    if (state.isLoading) return null;
 
-    _savedState = currentState;
+    _savedByDevice[deviceId] = currentState;
 
     state = DeviceControlState(
       isLoading: true,
       pendingDeviceId: deviceId,
+      lastPath: state.lastPath,
     );
 
-    if (newPower != null) {
-      _applyOptimisticUpdate(deviceId, newPower);
-    }
+    _applyOptimisticUpdate(deviceId, nextPower);
 
     try {
-      await _repo.control(deviceId, command, value);
-      state = const DeviceControlState();
-      return true;
-    } catch (e) {
-      if (newPower != null) {
-        _rollback(deviceId);
+      if (lanIp != null && lanIp.isNotEmpty) {
+        await SecureStorage.saveDeviceLanIp(serial, lanIp);
       }
+
+      final result = await _resolver.setPower(
+        deviceId: deviceId,
+        serial: serial,
+        power: nextPower,
+        lanIp: lanIp,
+      );
+
+      _savedByDevice.remove(deviceId);
+      state = DeviceControlState(lastPath: result.path);
+      return result;
+    } catch (e) {
+      _rollback(deviceId);
+      _savedByDevice.remove(deviceId);
       state = DeviceControlState(error: e.toString());
+      return null;
+    }
+  }
+
+  @Deprecated('Use togglePower for SoftAP/LAN/cloud routing')
+  Future<bool> sendCommand(
+    String deviceId,
+    String command,
+    String value,
+    DeviceState? currentState, {
+    String? serial,
+    String? lanIp,
+  }) async {
+    if (command != 'power' || serial == null) {
+      state = const DeviceControlState(error: 'Unsupported command');
       return false;
     }
+    final result = await togglePower(
+      deviceId: deviceId,
+      serial: serial,
+      nextPower: value,
+      currentState: currentState,
+      lanIp: lanIp,
+    );
+    return result != null;
   }
 
   void _applyOptimisticUpdate(String deviceId, String newPower) {
@@ -65,21 +105,22 @@ class DeviceControlNotifier extends Notifier<DeviceControlState> {
       'last_changed_at': now,
     };
     ref.read(deviceListProvider.notifier).applyLiveUpdate(deviceId, update);
-    ref.read(deviceDetailProvider.notifier).applyLiveUpdate(update);
+    ref.read(deviceDetailProvider.notifier).applyLiveUpdate(deviceId, update);
   }
 
   void _rollback(String deviceId) {
-    if (_savedState == null) return;
+    final saved = _savedByDevice[deviceId];
+    if (saved == null) return;
     final update = <String, dynamic>{
-      'power': _savedState!.power,
-      'last_changed_at': _savedState!.lastChangedAt,
+      'power': saved.power,
+      'last_changed_at': saved.lastChangedAt,
     };
     ref.read(deviceListProvider.notifier).applyLiveUpdate(deviceId, update);
-    ref.read(deviceDetailProvider.notifier).applyLiveUpdate(update);
+    ref.read(deviceDetailProvider.notifier).applyLiveUpdate(deviceId, update);
   }
 
   void clearError() {
-    state = const DeviceControlState();
+    state = DeviceControlState(lastPath: state.lastPath);
   }
 }
 

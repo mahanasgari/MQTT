@@ -20,6 +20,16 @@ class HouseholdRepository {
     return Household.fromJson(data);
   }
 
+  Future<void> update(String id, {String? name, String? timezone}) async {
+    await _api.patch<dynamic>(
+      '/households/$id',
+      body: {
+        if (name != null) 'name': name,
+        if (timezone != null) 'timezone': timezone,
+      },
+    );
+  }
+
   Future<void> delete(String id) async {
     await _api.delete<dynamic>('/households/$id');
   }

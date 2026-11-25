@@ -56,7 +56,11 @@ class PairingTokenResponse {
 
 enum ApSetupStep {
   instructions,
+  /// Serial + pairing token while phone still has internet (before SoftAP).
+  enterSerialOnline,
   connectToAp,
+  /// Pick a nearby 2.4 GHz network in the app (no typing the SSID).
+  pickWifi,
   enterWifiCreds,
   sendingCreds,
   waitingForDevice,

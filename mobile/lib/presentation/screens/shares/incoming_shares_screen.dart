@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smartplug/l10n/app_localizations.dart';
 import '../../providers/share_provider.dart';
 import '../../../core/theme/app_theme.dart';
@@ -21,19 +22,35 @@ class IncomingSharesScreen extends ConsumerWidget {
               shares.where((s) => s.status == 'pending').toList();
           if (pending.isEmpty) {
             return Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.share, size: 48, color: Colors.grey[300]),
-                  const SizedBox(height: 12),
-                  Text(
-                    l10n.noPendingInvitations,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(color: Colors.grey[500]),
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.share, size: 48, color: Colors.grey[300]),
+                    const SizedBox(height: 12),
+                    Text(
+                      l10n.noPendingInvitations,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium
+                          ?.copyWith(color: Colors.grey[500]),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      l10n.emptyIncomingHint,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 13, color: Colors.grey[400], height: 1.4),
+                    ),
+                    const SizedBox(height: 24),
+                    OutlinedButton.icon(
+                      onPressed: () => context.push('/help'),
+                      icon: const Icon(Icons.help_outline, size: 18),
+                      label: Text(l10n.needHelp),
+                    ),
+                  ],
+                ),
               ),
             );
           }
@@ -77,7 +94,11 @@ class IncomingSharesScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        l10n.scopeId(share.scopeId.substring(0, 8)),
+                        l10n.scopeId(
+                          share.scopeId.length <= 8
+                              ? share.scopeId
+                              : share.scopeId.substring(0, 8),
+                        ),
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey[500],

@@ -33,6 +33,13 @@ class DeviceState {
         lastChangedAt: lastChangedAt ?? this.lastChangedAt,
         lastSeenAt: lastSeenAt ?? this.lastSeenAt,
       );
+
+  Map<String, dynamic> toJson() => {
+        'power': power,
+        'connectivity': connectivity,
+        'last_changed_at': lastChangedAt,
+        'last_seen_at': lastSeenAt,
+      };
 }
 
 class Device {
@@ -41,8 +48,14 @@ class Device {
   final String? name;
   final String? householdId;
   final String? firmwareVersion;
+  final String? lanIp;
+  final String? wifiSsid;
   final DeviceState? state;
   final String createdAt;
+  /// Ownership role returned by the API when the device comes from a share.
+  /// `null` means the device is owned by the current user (no badge needed).
+  /// Possible non-null values: `"control"`, `"view"`, `"admin"`.
+  final String? role;
 
   const Device({
     required this.id,
@@ -50,8 +63,11 @@ class Device {
     this.name,
     this.householdId,
     this.firmwareVersion,
+    this.lanIp,
+    this.wifiSsid,
     this.state,
     required this.createdAt,
+    this.role,
   });
 
   String get displayName => name ?? serial;
@@ -62,20 +78,44 @@ class Device {
         name: json['name'] as String?,
         householdId: json['household_id'] as String?,
         firmwareVersion: json['firmware_version'] as String?,
+        lanIp: json['lan_ip'] as String?,
+        wifiSsid: json['wifi_ssid'] as String?,
         state: json['state'] != null
             ? DeviceState.fromJson(json['state'] as Map<String, dynamic>)
             : null,
         createdAt: json['created_at'] as String,
+        role: json['role'] as String?,
       );
 
-  Device copyWith({DeviceState? state}) => Device(
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'serial': serial,
+        if (name != null) 'name': name,
+        if (householdId != null) 'household_id': householdId,
+        if (firmwareVersion != null) 'firmware_version': firmwareVersion,
+        if (lanIp != null) 'lan_ip': lanIp,
+        if (wifiSsid != null) 'wifi_ssid': wifiSsid,
+        if (state != null) 'state': state!.toJson(),
+        'created_at': createdAt,
+        if (role != null) 'role': role,
+      };
+
+  Device copyWith({
+    DeviceState? state,
+    String? lanIp,
+    String? wifiSsid,
+  }) =>
+      Device(
         id: id,
         serial: serial,
         name: name,
         householdId: householdId,
         firmwareVersion: firmwareVersion,
+        lanIp: lanIp ?? this.lanIp,
+        wifiSsid: wifiSsid ?? this.wifiSsid,
         state: state ?? this.state,
         createdAt: createdAt,
+        role: role,
       );
 }
 

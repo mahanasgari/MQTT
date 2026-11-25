@@ -6,5 +6,6 @@ class AppConstants {
   static const int otpRetryAfterSeconds = 60;
   static const int defaultPageSize = 50;
   static const Duration wsReconnectDelay = Duration(seconds: 3);
-  static const Duration httpTimeout = Duration(seconds: 30);
+  // Cellular TLS to socket.aale.ir can be slow (1–2s RTT); keep generous.
+  static const Duration httpTimeout = Duration(seconds: 60);
 }

@@ -24,6 +24,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   String? _error;
   bool _loading = false;
   int _countdown = 0;
+  /// `bale` | `sms`
+  String _channel = 'bale';
 
   @override
   void dispose() {
@@ -47,19 +49,23 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   Future<void> _handleSendOtp() async {
-    final phone = _phoneController.text.trim();
-    final error = formatPhoneError(phone);
+    final l10n = AppLocalizations.of(context)!;
+    final phone = normalizePhone(_phoneController.text);
+    final error = formatPhoneError(phone, l10n);
     if (error != null) {
       setState(() => _phoneError = error);
       return;
     }
+    _phoneController.text = phone;
     setState(() {
       _phoneError = null;
       _error = null;
       _loading = true;
     });
 
-    final result = await ref.read(authProvider.notifier).sendOtp(phone);
+    final result = await ref
+        .read(authProvider.notifier)
+        .sendOtp(phone, channel: _channel);
     if (!mounted) return;
 
     if (result.isSuccess) {
@@ -72,7 +78,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         _otpFocus.requestFocus();
       });
     } else {
-      final errMsg = result.error ?? 'Failed to send code';
+      final errMsg = result.error ?? l10n.failedToSendCode;
       setState(() {
         _loading = false;
         _error = errMsg;
@@ -86,9 +92,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   Future<void> _handleVerifyOtp() async {
+    final l10n = AppLocalizations.of(context)!;
     final code = _otpController.text.trim();
     if (code.isEmpty) {
-      setState(() => _error = 'Enter the verification code');
+      setState(() => _error = l10n.enterVerificationCode);
       return;
     }
     setState(() {
@@ -121,12 +128,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  Icons.power_settings_new_rounded,
-                  size: 48,
-                  color: AppTheme.primary,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    'assets/brand/aale_logo_1024.png',
+                    width: 88,
+                    height: 88,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 12),
                 Text(
                   l10n.appTitle,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -136,13 +147,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  _showOtpStep ? 'Enter the verification code' : 'Sign in with your phone number',
+                  _showOtpStep
+                      ? l10n.loginOtpSubtitle
+                      : l10n.loginPhoneSubtitle,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Colors.grey[600],
                       ),
                 ),
                 const SizedBox(height: 32),
-
                 if (_error != null)
                   Container(
                     width: double.infinity,
@@ -158,7 +170,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       style: TextStyle(color: AppTheme.error, fontSize: 14),
                     ),
                   ),
-
                 if (!_showOtpStep) ..._buildPhoneStep(l10n),
                 if (_showOtpStep) ..._buildOtpStep(l10n),
               ],
@@ -185,7 +196,44 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         onSubmitted: (_) => _handleSendOtp(),
         onChanged: (_) => setState(() => _phoneError = null),
       ),
-      const SizedBox(height: 16),
+      const SizedBox(height: 12),
+      Text(
+        l10n.channelLabel,
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: Colors.grey[700],
+            ),
+      ),
+      RadioListTile<String>(
+        dense: true,
+        contentPadding: EdgeInsets.zero,
+        title: Text(l10n.channelBale),
+        value: 'bale',
+        groupValue: _channel,
+        onChanged: _loading
+            ? null
+            : (v) => setState(() => _channel = v ?? 'bale'),
+      ),
+      RadioListTile<String>(
+        dense: true,
+        contentPadding: EdgeInsets.zero,
+        title: Text(l10n.channelSms),
+        value: 'sms',
+        groupValue: _channel,
+        onChanged: _loading
+            ? null
+            : (v) => setState(() => _channel = v ?? 'sms'),
+      ),
+      if (_channel == 'bale')
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Text(
+            l10n.baleHint,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: Colors.grey[600],
+                ),
+          ),
+        ),
+      const SizedBox(height: 8),
       SizedBox(
         width: double.infinity,
         height: 48,
@@ -206,7 +254,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   List<Widget> _buildOtpStep(AppLocalizations l10n) {
     return [
       Text(
-        'Code sent to ${_phoneController.text.trim()}',
+        l10n.otpSentTo(_phoneController.text.trim()),
         style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: Colors.grey[600],
             ),
@@ -253,17 +301,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               _error = null;
               _otpController.clear();
             }),
-            child: const Text('Change number'),
+            child: Text(l10n.changeNumber),
           ),
           if (_countdown > 0)
             Text(
-              'Resend in ${_countdown}s',
+              l10n.resendInSeconds(_countdown),
               style: TextStyle(color: Colors.grey[400]),
             )
           else
             TextButton(
               onPressed: _loading ? null : _handleSendOtp,
-              child: const Text('Resend code'),
+              child: Text(l10n.resendCode),
             ),
         ],
       ),

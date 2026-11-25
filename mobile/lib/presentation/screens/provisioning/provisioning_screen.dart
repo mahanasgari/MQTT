@@ -17,19 +17,19 @@ class ProvisioningScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'How would you like to set up your device?',
+              l10n.provisionHowTitle,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Choose the method that matches your device.',
+              l10n.provisionHowSubtitle,
               style: TextStyle(color: Colors.grey[600], fontSize: 14),
             ),
             const SizedBox(height: 32),
             _OptionCard(
-              icon: Icons.wifi_tethering,
+              icon: Icons.cloud_outlined,
               title: l10n.provisionWifi,
               subtitle: l10n.provisionWifiSub,
               onTap: () => context.push('/provision/ap-setup'),

@@ -4,10 +4,13 @@ import '../../core/network/api_client.dart';
 class AuthRepository {
   final ApiClient _api = ApiClient.instance;
 
-  Future<SendOtpResponse> sendOtp(String phone) async {
+  Future<SendOtpResponse> sendOtp(
+    String phone, {
+    String channel = 'sms',
+  }) async {
     final data = await _api.post<Map<String, dynamic>>(
       '/auth/send-otp',
-      body: SendOtpRequest(phone: phone).toJson(),
+      body: SendOtpRequest(phone: phone, channel: channel).toJson(),
       skipAuth: true,
     );
     return SendOtpResponse.fromJson(data);

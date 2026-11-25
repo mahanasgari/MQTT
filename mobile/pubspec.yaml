@@ -1,7 +1,7 @@
 name: smartplug
 description: SmartPlug IoT mobile app
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.2+3
 
 environment:
   sdk: ^3.5.0
@@ -18,6 +18,7 @@ dependencies:
   http: ^1.3.0
   web_socket_channel: ^3.0.2
   intl: ^0.20.2
+  qr_flutter: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -29,3 +30,4 @@ flutter:
   generate: true
   assets:
     - .env
+    - assets/brand/aale_logo_1024.png

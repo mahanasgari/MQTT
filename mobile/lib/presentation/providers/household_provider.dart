@@ -12,8 +12,7 @@ class HouseholdListNotifier extends AsyncNotifier<List<Household>> {
   }
 
   Future<List<Household>> _fetch() async {
-    final list = await _repo.list();
-    return list;
+    return _repo.list();
   }
 
   Future<void> refresh() async {
@@ -24,6 +23,16 @@ class HouseholdListNotifier extends AsyncNotifier<List<Household>> {
   Future<bool> create(String name, {String? timezone}) async {
     try {
       await _repo.create(name, timezone: timezone);
+      await refresh();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> rename(String id, String name) async {
+    try {
+      await _repo.update(id, name: name);
       await refresh();
       return true;
     } catch (e) {
